@@ -3,6 +3,9 @@ const normalScrollAnimationLenghtMS = 100;
 const scrollSpeed = 5;
 
 // Device Breakpoints
-const tabletWidth = 1400.0;
-const mobileWidth = 500.0;
-const appBarCollapseWidth = 900.0;
+class DeviceBreakpoints {
+  static const mobileWidth = 480.0;
+  static const tabletWidth = 800.0;
+  static const desktopWidth = 1200.0;
+}
+// const appBarCollapseWidth = 900.0;

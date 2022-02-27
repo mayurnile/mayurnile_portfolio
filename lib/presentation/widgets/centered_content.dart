@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import './widgets.dart';
 
@@ -20,9 +21,9 @@ class CenteredContent extends StatelessWidget {
       builder: (BuildContext _, BoxConstraints constraints) {
         double horizontalPadding = 42.0;
 
-        if (constraints.maxWidth > tabletWidth) {
+        if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
           horizontalPadding = 120.0;
-        } else if (constraints.maxWidth > mobileWidth) {
+        } else if (constraints.maxWidth > DeviceBreakpoints.tabletWidth) {
           horizontalPadding = 72.0;
         }
 
@@ -35,13 +36,13 @@ class CenteredContent extends StatelessWidget {
             child: Row(
               children: [
                 // left bar
-                if (constraints.maxWidth > tabletWidth) _buildLeftBar(size),
+                if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) _buildLeftBar(size),
                 // center child
                 Expanded(
                   child: builder(context, controller),
                 ),
                 // right bar
-                if (constraints.maxWidth > tabletWidth) _buildRightBar(size, textTheme)
+                if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) _buildRightBar(size, textTheme)
               ],
             ),
           ),
@@ -56,46 +57,64 @@ class CenteredContent extends StatelessWidget {
   Widget _buildLeftBar(Size size) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          // social icons
-          // github
-          const SocialLinkButton(icon: IconAssets.github, type: SocialLinkType.github),
-          // linkedin
-          const SocialLinkButton(icon: IconAssets.linkedin, type: SocialLinkType.linkedin),
-          // discord
-          const SocialLinkButton(icon: IconAssets.discord, type: SocialLinkType.discord),
-          // accent line
-          Container(
-            height: size.height * 0.3,
-            width: 2.0,
-            color: AppTheme.fontLightColor,
+        children: AnimationConfiguration.toStaggeredList(
+          duration: const Duration(seconds: 1),
+          childAnimationBuilder: (widget) => SlideAnimation(
+            verticalOffset: -200.0,
+            child: FadeInAnimation(
+              child: widget,
+            ),
           ),
-        ],
+          children: [
+            // social icons
+            // github
+            const SocialLinkButton(icon: IconAssets.github, type: SocialLinkType.github),
+            // linkedin
+            const SocialLinkButton(icon: IconAssets.linkedin, type: SocialLinkType.linkedin),
+            // discord
+            const SocialLinkButton(icon: IconAssets.discord, type: SocialLinkType.discord),
+            // accent line
+            Container(
+              height: size.height * 0.3,
+              width: 2.0,
+              color: AppTheme.fontLightColor,
+            ),
+          ],
+        ),
       );
 
   Widget _buildRightBar(Size size, TextTheme textTheme) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          // my email
-          Transform.translate(
-            offset: const Offset(2.0, 0.0),
-            child: RotatedBox(
-              quarterTurns: 1,
-              child: Text(
-                'mayurnile95@gmail.com',
-                style: textTheme.headline4!.copyWith(color: AppTheme.fontLightColor),
-              ),
+        children: AnimationConfiguration.toStaggeredList(
+          duration: const Duration(seconds: 1),
+          childAnimationBuilder: (widget) => SlideAnimation(
+            verticalOffset: -200.0,
+            child: FadeInAnimation(
+              child: widget,
             ),
           ),
-          // spacing
-          const SizedBox(height: 22.0),
-          // accent line
-          Container(
-            height: size.height * 0.15,
-            width: 2.0,
-            color: AppTheme.fontLightColor,
-          ),
-        ],
+          children: [
+            // my email
+            Transform.translate(
+              offset: const Offset(2.0, 0.0),
+              child: RotatedBox(
+                quarterTurns: 1,
+                child: Text(
+                  'mayurnile95@gmail.com',
+                  style: textTheme.headline4!.copyWith(color: AppTheme.fontLightColor),
+                ),
+              ),
+            ),
+            // spacing
+            const SizedBox(height: 22.0),
+            // accent line
+            Container(
+              height: size.height * 0.15,
+              width: 2.0,
+              color: AppTheme.fontLightColor,
+            ),
+          ],
+        ),
       );
 }

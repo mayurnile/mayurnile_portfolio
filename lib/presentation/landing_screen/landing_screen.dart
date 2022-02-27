@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../widgets/widgets.dart';
 
@@ -20,7 +21,7 @@ class LandingScreen extends StatelessWidget {
             child: LayoutBuilder(builder: (BuildContext _, BoxConstraints constraints) {
               return CenteredContent(
                 builder: (BuildContext ctx, ScrollController controller) {
-                  if (constraints.maxWidth > tabletWidth) {
+                  if (constraints.maxWidth > DeviceBreakpoints.tabletWidth) {
                     return SmoothScroll(
                       controller: controller,
                       child: ScrollConfiguration(
@@ -60,18 +61,20 @@ class LandingScreen extends StatelessWidget {
   /// Builder Functions
   ///
   ///
-  Widget _buildScreensList(ScrollController controller, bool isNeverScroll) => ListView(
-        controller: controller,
-        physics: isNeverScroll
-            ? const NeverScrollableScrollPhysics()
-            : const AlwaysScrollableScrollPhysics(
-                parent: BouncingScrollPhysics(),
-              ),
-        children: const [
-          HomeScreen(),
-          SkillsScreen(),
-          MyProjectsScreen(),
-          ContactScreen(),
-        ],
+  Widget _buildScreensList(ScrollController controller, bool isNeverScroll) => AnimationLimiter(
+        child: ListView(
+          controller: controller,
+          physics: isNeverScroll
+              ? const NeverScrollableScrollPhysics()
+              : const AlwaysScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics(),
+                ),
+          children: const [
+            HomeScreen(),
+            SkillsScreen(),
+            MyProjectsScreen(),
+            ContactScreen(),
+          ],
+        ),
       );
 }

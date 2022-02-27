@@ -12,9 +12,9 @@ class MyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    if (screenWidth > appBarCollapseWidth) {
+    if (screenWidth > DeviceBreakpoints.desktopWidth) {
       return const DesktopAppBar();
-    } else if (screenWidth > mobileWidth) {
+    } else if (screenWidth > DeviceBreakpoints.mobileWidth) {
       return const TabletAppBar(isMobile: false);
     } else {
       return const TabletAppBar(isMobile: true);

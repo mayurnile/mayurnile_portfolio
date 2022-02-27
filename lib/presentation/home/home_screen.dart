@@ -13,12 +13,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    if (screenWidth > tabletWidth) {
+    if (screenWidth > DeviceBreakpoints.desktopWidth) {
       return const HomeDesktop();
-    } else if (screenWidth > mobileWidth && screenWidth < tabletWidth) {
-      return const HomeTablet();
-    } else {
+    } else if (screenWidth < DeviceBreakpoints.mobileWidth) {
       return const HomeMobile();
+    } else {
+      return const HomeTablet();
     }
   }
 }

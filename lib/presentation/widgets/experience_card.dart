@@ -79,7 +79,7 @@ class ExperienceCard extends StatelessWidget {
               dashPattern: const [4, 8, 4, 8],
               color: Colors.white,
               borderType: BorderType.Circle,
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(size.width * 0.005),
               child: Container(
                 height: 22.0,
                 width: 22.0,
