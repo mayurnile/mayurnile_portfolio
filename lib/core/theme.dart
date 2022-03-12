@@ -18,7 +18,7 @@ class AppTheme {
 
   // theme data
   static ThemeData getAppThemeData() => ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        visualDensity: VisualDensity.standard,
         primaryColor: primaryColor,
         scaffoldBackgroundColor: backgroundColor,
         fontFamily: 'Josefin Sans',
@@ -69,6 +69,12 @@ class AppTheme {
           bodyText2: TextStyle(
             fontFamily: 'Nunito',
             fontSize: 14.0,
+            fontWeight: FontWeight.w400,
+            color: fontLightColor,
+          ),
+          subtitle1: TextStyle(
+            fontFamily: 'Nunito',
+            fontSize: 10.0,
             fontWeight: FontWeight.w400,
             color: fontLightColor,
           ),

@@ -6,6 +6,7 @@ const scrollSpeed = 5;
 class DeviceBreakpoints {
   static const mobileWidth = 480.0;
   static const tabletWidth = 800.0;
+  static const maxTabletWidth = 1000.0;
   static const desktopWidth = 1200.0;
 }
 // const appBarCollapseWidth = 900.0;

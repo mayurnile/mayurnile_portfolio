@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../../core/core.dart';
 
@@ -30,27 +31,48 @@ class DesktopAppBar extends StatelessWidget {
   /// Builder Functions
   ///
   ///
-  Widget _buildNavigationItems() => Row(
-        children: const [
-          // home
-          _NavigationItem(title: '01.home', isSelected: true),
-          // skills
-          _NavigationItem(title: '02.skills', isSelected: false),
-          // my work
-          _NavigationItem(title: '03.my work', isSelected: false),
-          // contact
-          _NavigationItem(title: '04.contact', isSelected: false),
-        ],
-      );
+  Widget _buildNavigationItems() => GetBuilder<NavBarController>(builder: (NavBarController controller) {
+        return Row(
+          children: [
+            // home
+            _NavigationItem(
+              title: '01.home',
+              isSelected: controller.navBarState == NavBarState.home,
+              navKey: controller.homeGlobalKey,
+            ),
+            // skills
+            _NavigationItem(
+              title: '02.skills',
+              isSelected: controller.navBarState == NavBarState.skills,
+              navKey: controller.skillsGlobalKey,
+            ),
+            // my work
+            _NavigationItem(
+              title: '03.my work',
+              isSelected: controller.navBarState == NavBarState.mywork,
+              navKey: controller.myWorkGlobalKey,
+            ),
+            // contact
+            _NavigationItem(
+              title: '04.contact',
+              isSelected: controller.navBarState == NavBarState.contact,
+              navKey: controller.contactGlobalKey,
+            ),
+          ],
+        );
+      });
 }
 
 class _NavigationItem extends StatefulWidget {
   final String title;
   final bool isSelected;
+  final GlobalKey navKey;
+
   const _NavigationItem({
     Key? key,
     required this.title,
     required this.isSelected,
+    required this.navKey,
   }) : super(key: key);
 
   @override
@@ -58,16 +80,67 @@ class _NavigationItem extends StatefulWidget {
 }
 
 class __NavigationItemState extends State<_NavigationItem> {
+  // state variables
+  late bool isSelected;
+
+  @override
+  void initState() {
+    isSelected = widget.isSelected;
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant _NavigationItem oldWidget) {
+    isSelected = widget.isSelected;
+    super.didUpdateWidget(oldWidget);
+  }
+
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Padding(
       padding: const EdgeInsets.only(left: 64.0),
-      child: Text(
-        widget.title,
-        style: textTheme.headline4!.copyWith(
-          color: widget.isSelected ? AppTheme.secondaryColor : AppTheme.fontLightColor,
+      child: GestureDetector(
+        onTap: () {
+          if (widget.navKey.currentContext != null) {
+            Scrollable.ensureVisible(
+              widget.navKey.currentContext!,
+              duration: const Duration(seconds: 1),
+              curve: Curves.easeInOutCubic,
+            );
+          }
+        },
+        child: MouseRegion(
+          onEnter: (_) => setState(() => isSelected = true),
+          onExit: (_) => setState(() => isSelected = widget.isSelected),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // nav bar title
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 300),
+                style: textTheme.headline4!.copyWith(
+                  color: isSelected ? AppTheme.secondaryColor : AppTheme.fontLightColor,
+                ),
+                child: Text(widget.title),
+              ),
+              // spacing
+              const SizedBox(height: 4.0),
+              // animated line
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOutCubic,
+                height: 3.0,
+                width: isSelected ? 32.0 : 0.0,
+                decoration: BoxDecoration(
+                  color: AppTheme.ternaryColor,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

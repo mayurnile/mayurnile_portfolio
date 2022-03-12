@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import './core/core.dart';
+import './di/locator.dart' as di;
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  di.init();
   runApp(const MyPortfolio());
 }
 

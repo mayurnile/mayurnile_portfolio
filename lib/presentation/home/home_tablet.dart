@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../widgets/widgets.dart';
 
@@ -21,14 +20,7 @@ class HomeTablet extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: AnimationConfiguration.toStaggeredList(
-            duration: const Duration(milliseconds: 600),
-            childAnimationBuilder: (widget) => SlideAnimation(
-              verticalOffset: 100.0,
-              child: FadeInAnimation(
-                child: widget,
-              ),
-            ),
+          children: AnimationConfig.columnToAnimatedList(
             children: [
               // title
               SizedBox(

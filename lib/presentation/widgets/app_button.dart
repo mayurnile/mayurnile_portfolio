@@ -27,8 +27,8 @@ class AppButton extends StatelessWidget {
         side: BorderSide(color: borderColor),
         padding: isSmall
             ? const EdgeInsets.symmetric(
-                vertical: 22.0,
-                horizontal: 22.0,
+                vertical: 18.0,
+                horizontal: 18.0,
               )
             : const EdgeInsets.symmetric(
                 vertical: 22.0,

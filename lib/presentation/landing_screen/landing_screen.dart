@@ -21,32 +21,22 @@ class LandingScreen extends StatelessWidget {
             child: LayoutBuilder(builder: (BuildContext _, BoxConstraints constraints) {
               return CenteredContent(
                 builder: (BuildContext ctx, ScrollController controller) {
-                  if (constraints.maxWidth > DeviceBreakpoints.tabletWidth) {
+                  locator.get<NavBarController>().scrollController = controller;
+
+                  if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
                     return SmoothScroll(
                       controller: controller,
-                      child: ScrollConfiguration(
-                        behavior: ScrollConfiguration.of(context).copyWith(
-                          scrollbars: false,
-                          dragDevices: {
-                            PointerDeviceKind.touch,
-                            PointerDeviceKind.mouse,
-                            PointerDeviceKind.unknown,
-                          },
-                        ),
-                        child: _buildScreensList(controller, true),
+                      child: _buildScreensList(
+                        context: context,
+                        controller: controller,
+                        isNeverScroll: true,
                       ),
                     );
                   } else {
-                    return ScrollConfiguration(
-                      behavior: ScrollConfiguration.of(context).copyWith(
-                        scrollbars: false,
-                        dragDevices: {
-                          PointerDeviceKind.touch,
-                          PointerDeviceKind.mouse,
-                          PointerDeviceKind.unknown,
-                        },
-                      ),
-                      child: _buildScreensList(controller, false),
+                    return _buildScreensList(
+                      context: context,
+                      controller: controller,
+                      isNeverScroll: false,
                     );
                   }
                 },
@@ -61,20 +51,43 @@ class LandingScreen extends StatelessWidget {
   /// Builder Functions
   ///
   ///
-  Widget _buildScreensList(ScrollController controller, bool isNeverScroll) => AnimationLimiter(
-        child: ListView(
+  Widget _buildScreensList({
+    required BuildContext context,
+    required ScrollController controller,
+    required bool isNeverScroll,
+  }) {
+    final NavBarController navBarController = locator.get<NavBarController>();
+
+    final List<Widget> screens = [
+      HomeScreen(key: navBarController.homeGlobalKey),
+      SkillsScreen(key: navBarController.skillsGlobalKey),
+      MyProjectsScreen(key: navBarController.myWorkGlobalKey),
+      ContactScreen(key: navBarController.contactGlobalKey),
+    ];
+
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        scrollbars: false,
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.unknown,
+        },
+      ),
+      child: AnimationLimiter(
+        child: SingleChildScrollView(
           controller: controller,
           physics: isNeverScroll
               ? const NeverScrollableScrollPhysics()
               : const AlwaysScrollableScrollPhysics(
                   parent: BouncingScrollPhysics(),
                 ),
-          children: const [
-            HomeScreen(),
-            SkillsScreen(),
-            MyProjectsScreen(),
-            ContactScreen(),
-          ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: screens,
+          ),
         ),
-      );
+      ),
+    );
+  }
 }

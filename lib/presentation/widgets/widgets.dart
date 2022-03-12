@@ -12,6 +12,6 @@ export './icon_button.dart';
 // utils
 export './smooth_scroll.dart';
 export './skill_badge.dart';
-export './experience_card.dart';
-export './project_card.dart';
+export 'experience_card/experience_card.dart';
+export 'project_card/project_card.dart';
 export './testimonial_card.dart';

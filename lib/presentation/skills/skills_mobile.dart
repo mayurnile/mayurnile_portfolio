@@ -18,7 +18,10 @@ class SkillsMobile extends StatelessWidget {
         // title
         Text(
           '<my skills>',
-          style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+          style: textTheme.headline5!.copyWith(
+            color: AppTheme.ternaryColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         // spacing
         const SizedBox(height: 32.0),
@@ -29,7 +32,10 @@ class SkillsMobile extends StatelessWidget {
         // work experience title
         Text(
           '<my work experience>',
-          style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+          style: textTheme.headline5!.copyWith(
+            color: AppTheme.ternaryColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         // spacing
         const SizedBox(height: 48.0),
@@ -90,6 +96,7 @@ class SkillsMobile extends StatelessWidget {
             jobTitle: 'Sr. Flutter Developer',
             description: 'Lorem ipsum...',
             color: AppTheme.primaryColor,
+            type: ExperienceCardType.mobile,
           ),
           // Outshade Digital Media Experience
           ExperienceCard(
@@ -98,6 +105,7 @@ class SkillsMobile extends StatelessWidget {
             jobTitle: 'Flutter Developer & UI/UX Designer',
             description: 'Lorem ipsum...',
             color: AppTheme.secondaryColor,
+            type: ExperienceCardType.mobile,
           ),
           // OETD Labs Experience
           ExperienceCard(
@@ -106,6 +114,7 @@ class SkillsMobile extends StatelessWidget {
             jobTitle: 'Flutter Developer',
             description: 'Lorem ipsum...',
             color: AppTheme.ternaryColor,
+            type: ExperienceCardType.mobile,
             isLast: true,
           ),
         ],

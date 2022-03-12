@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 import '../widgets/widgets.dart';
 
@@ -12,32 +13,42 @@ class SkillsDesktop extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // title
-        Text(
-          '<my skills>',
-          style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
-        ),
-        // spacing
-        const SizedBox(height: 32.0),
-        // skills list
-        _buildSkillsList(),
-        // spacing
-        const SizedBox(height: 84.0),
-        // work experience title
-        Text(
-          '<my work experience>',
-          style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
-        ),
-        // spacing
-        const SizedBox(height: 48.0),
-        // experience list
-        _buildWorkExperienceList(),
-        // spacing
-        SizedBox(height: size.height * 0.2),
-      ],
+    return VisibilityDetector(
+      key: const ValueKey('/skills-desktop-view'),
+      onVisibilityChanged: (visibilityInfo) {
+        final double visiblePercentage = visibilityInfo.visibleFraction * 100;
+
+        if (visiblePercentage > 25) {
+          locator.get<NavBarController>().updateNavBarState(NavBarState.skills);
+        }
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // title
+          Text(
+            '<my skills>',
+            style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+          ),
+          // spacing
+          const SizedBox(height: 32.0),
+          // skills list
+          _buildSkillsList(),
+          // spacing
+          const SizedBox(height: 84.0),
+          // work experience title
+          Text(
+            '<my work experience>',
+            style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+          ),
+          // spacing
+          const SizedBox(height: 48.0),
+          // experience list
+          _buildWorkExperienceList(),
+          // spacing
+          SizedBox(height: size.height * 0.2),
+        ],
+      ),
     );
   }
 
@@ -78,6 +89,7 @@ class SkillsDesktop extends StatelessWidget {
             jobTitle: 'Sr. Flutter Developer',
             description: 'Lorem ipsum...',
             color: AppTheme.primaryColor,
+            type: ExperienceCardType.desktop,
           ),
           // Outshade Digital Media Experience
           ExperienceCard(
@@ -86,6 +98,7 @@ class SkillsDesktop extends StatelessWidget {
             jobTitle: 'Flutter Developer & UI/UX Designer',
             description: 'Lorem ipsum...',
             color: AppTheme.secondaryColor,
+            type: ExperienceCardType.desktop,
           ),
           // OETD Labs Experience
           ExperienceCard(
@@ -94,6 +107,7 @@ class SkillsDesktop extends StatelessWidget {
             jobTitle: 'Flutter Developer',
             description: 'Lorem ipsum...',
             color: AppTheme.ternaryColor,
+            type: ExperienceCardType.desktop,
             isLast: true,
           ),
         ],

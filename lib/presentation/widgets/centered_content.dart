@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import './widgets.dart';
 
@@ -57,14 +56,7 @@ class CenteredContent extends StatelessWidget {
   Widget _buildLeftBar(Size size) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
-        children: AnimationConfiguration.toStaggeredList(
-          duration: const Duration(seconds: 1),
-          childAnimationBuilder: (widget) => SlideAnimation(
-            verticalOffset: -200.0,
-            child: FadeInAnimation(
-              child: widget,
-            ),
-          ),
+        children: AnimationConfig.sideBarAnimatedList(
           children: [
             // social icons
             // github
@@ -86,26 +78,10 @@ class CenteredContent extends StatelessWidget {
   Widget _buildRightBar(Size size, TextTheme textTheme) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
-        children: AnimationConfiguration.toStaggeredList(
-          duration: const Duration(seconds: 1),
-          childAnimationBuilder: (widget) => SlideAnimation(
-            verticalOffset: -200.0,
-            child: FadeInAnimation(
-              child: widget,
-            ),
-          ),
+        children: AnimationConfig.sideBarAnimatedList(
           children: [
             // my email
-            Transform.translate(
-              offset: const Offset(2.0, 0.0),
-              child: RotatedBox(
-                quarterTurns: 1,
-                child: Text(
-                  'mayurnile95@gmail.com',
-                  style: textTheme.headline4!.copyWith(color: AppTheme.fontLightColor),
-                ),
-              ),
-            ),
+            const _AnimatedEmailLink(),
             // spacing
             const SizedBox(height: 22.0),
             // accent line
@@ -117,4 +93,50 @@ class CenteredContent extends StatelessWidget {
           ],
         ),
       );
+}
+
+class _AnimatedEmailLink extends StatefulWidget {
+  const _AnimatedEmailLink({Key? key}) : super(key: key);
+
+  @override
+  State<_AnimatedEmailLink> createState() => __AnimatedEmailLinkState();
+}
+
+class __AnimatedEmailLinkState extends State<_AnimatedEmailLink> {
+  // state variable
+  bool isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => isHovered = true),
+      onExit: (_) => setState(() => isHovered = false),
+      child: Transform.translate(
+        offset: const Offset(2.0, 0.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // content
+            RotatedBox(
+              quarterTurns: 1,
+              child: AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                style: textTheme.headline4!.copyWith(color: isHovered ? AppTheme.fontDarkColor : AppTheme.fontLightColor),
+                child: const Text('mayurnile95@gmail.com'),
+              ),
+            ),
+            // sizer container
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              height: isHovered ? 18.0 : 0.0,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

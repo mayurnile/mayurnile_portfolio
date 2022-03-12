@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../core/core.dart';
+import './project_card.dart';
 
-enum ProjectCardPosition { center, left, right }
+import '../../../core/core.dart';
 
-class ProjectCard extends StatelessWidget {
+class ProjectCardTablet extends StatelessWidget {
   final String title;
   final String subtitle;
   final String image;
   final ProjectCardPosition position;
 
-  const ProjectCard({
+  const ProjectCardTablet({
     Key? key,
     required this.title,
     required this.subtitle,
@@ -37,11 +37,23 @@ class ProjectCard extends StatelessWidget {
         break;
     }
 
+    // Calculating Widget Size
+    double height = size.height * 0.35;
+    double width = size.width * 0.5;
+    bool showLargeFont = false;
+
+    if (size.width > DeviceBreakpoints.mobileWidth && size.width < DeviceBreakpoints.maxTabletWidth) {
+      height = size.height * 0.4;
+      width = size.width * 0.6;
+    } else {
+      showLargeFont = true;
+    }
+
     return Transform.translate(
       offset: _offsetWidget,
       child: SizedBox(
-        height: size.height * 0.35,
-        width: size.width * 0.3,
+        height: height,
+        width: width,
         child: Stack(
           children: [
             // decorated border
@@ -51,7 +63,7 @@ class ProjectCard extends StatelessWidget {
             // image opacity filter
             _buildImageFilters(),
             // app details
-            _buildAppDetails(size, textTheme),
+            _buildAppDetails(size, textTheme, showLargeFont),
           ],
         ),
       ),
@@ -99,7 +111,7 @@ class ProjectCard extends StatelessWidget {
         ),
       );
 
-  Widget _buildAppDetails(Size size, TextTheme textTheme) => Positioned(
+  Widget _buildAppDetails(Size size, TextTheme textTheme, bool largeFont) => Positioned(
         left: size.width * 0.02,
         right: size.width * 0.1,
         bottom: size.height * 0.07,
@@ -109,14 +121,18 @@ class ProjectCard extends StatelessWidget {
             // app name
             Text(
               title,
-              style: textTheme.headline2!.copyWith(fontFamily: 'Josefin Sans'),
+              style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
             ),
             // spacing
             const SizedBox(height: 8.0),
             // description
             Text(
               subtitle,
-              style: textTheme.bodyText2!.copyWith(color: Colors.white),
+              style: textTheme.headline4!.copyWith(
+                color: Colors.white,
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.w300,
+              ),
             ),
             // spacing
             const SizedBox(height: 12.0),

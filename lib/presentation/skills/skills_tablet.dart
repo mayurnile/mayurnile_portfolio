@@ -90,6 +90,7 @@ class SkillsTablet extends StatelessWidget {
             jobTitle: 'Sr. Flutter Developer',
             description: 'Lorem ipsum...',
             color: AppTheme.primaryColor,
+            type: ExperienceCardType.tablet,
           ),
           // Outshade Digital Media Experience
           ExperienceCard(
@@ -98,6 +99,7 @@ class SkillsTablet extends StatelessWidget {
             jobTitle: 'Flutter Developer & UI/UX Designer',
             description: 'Lorem ipsum...',
             color: AppTheme.secondaryColor,
+            type: ExperienceCardType.tablet,
           ),
           // OETD Labs Experience
           ExperienceCard(
@@ -106,6 +108,7 @@ class SkillsTablet extends StatelessWidget {
             jobTitle: 'Flutter Developer',
             description: 'Lorem ipsum...',
             color: AppTheme.ternaryColor,
+            type: ExperienceCardType.tablet,
             isLast: true,
           ),
         ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
-import '../../core/core.dart';
+import '../../../core/core.dart';
 
-class ExperienceCard extends StatelessWidget {
+class ExperienceCardDesktop extends StatelessWidget {
   final String companyName;
   final String tenure;
   final String jobTitle;
@@ -11,7 +11,7 @@ class ExperienceCard extends StatelessWidget {
   final Color color;
   final bool isLast;
 
-  const ExperienceCard({
+  const ExperienceCardDesktop({
     Key? key,
     required this.companyName,
     required this.tenure,
