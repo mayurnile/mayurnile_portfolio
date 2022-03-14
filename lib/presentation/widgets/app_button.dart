@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/core.dart';
+
 class AppButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
@@ -20,22 +22,12 @@ class AppButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: Theme.of(context).textTheme.headline4!.copyWith(color: borderColor, fontSize: isSmall ? 14.0 : 18.0),
+        style: Theme.of(context).textTheme.headline4!.copyWith(
+              color: borderColor,
+              fontSize: isSmall ? 14.0 : 18.0,
+            ),
       ),
-      style: OutlinedButton.styleFrom(
-        elevation: 0.0,
-        side: BorderSide(color: borderColor),
-        padding: isSmall
-            ? const EdgeInsets.symmetric(
-                vertical: 18.0,
-                horizontal: 18.0,
-              )
-            : const EdgeInsets.symmetric(
-                vertical: 22.0,
-                horizontal: 36.0,
-              ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      ),
+      style: AppTheme.getOutlinedButtonStyle(isSmall, borderColor),
     );
   }
 }

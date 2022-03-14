@@ -15,9 +15,10 @@ class MyPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mayur Nile Portfolio',
+      title: 'Mayur Nile',
       theme: AppTheme.getAppThemeData(),
-      home: const LandingScreen(),
+      initialRoute: AppRoutes.landingRoute,
+      onGenerateRoute: (routeSettings) => generateRoute(routeSettings),
     );
   }
 }

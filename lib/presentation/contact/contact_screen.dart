@@ -66,6 +66,8 @@ class ContactScreen extends StatelessWidget {
           ),
           // contact section
           _buildContactSection(size, textTheme, testimonialCardType),
+          // social media section
+          if (testimonialCardType != TestimonialCardType.desktop) _buildSocialMediaSection(size, textTheme),
           // website footer
           _buildWebsiteFooter(size, textTheme),
           // spacing
@@ -190,10 +192,56 @@ class ContactScreen extends StatelessWidget {
           isSmall: type == TestimonialCardType.mobile,
         ),
         // spacing
-        SizedBox(height: size.height * 0.2),
+        SizedBox(height: type == TestimonialCardType.desktop ? size.height * 0.2 : size.height * 0.05),
       ],
     );
   }
+
+  Widget _buildSocialMediaSection(Size size, TextTheme textTheme) => Column(
+        children: [
+          // subtitle text
+          Text(
+            'or connect using',
+            style: textTheme.headline6,
+          ),
+          // spacing
+          const SizedBox(height: 32.0),
+          // social media icons
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              // github
+              SocialLinkButton(
+                icon: IconAssets.github,
+                type: SocialLinkType.github,
+                launchURL: Urls.githubLink,
+                defaultColor: AppTheme.fontDarkColor,
+              ),
+              // spacing
+              SizedBox(width: 18.0),
+              // linkedin
+              SocialLinkButton(
+                icon: IconAssets.linkedin,
+                type: SocialLinkType.linkedin,
+                launchURL: Urls.linkedinLink,
+                defaultColor: AppTheme.fontDarkColor,
+              ),
+              // spacing
+              SizedBox(width: 18.0),
+              // discord
+              SocialLinkButton(
+                icon: IconAssets.discord,
+                type: SocialLinkType.discord,
+                launchURL: Urls.discordLink,
+                defaultColor: AppTheme.fontDarkColor,
+              ),
+            ],
+          ),
+          // spacing
+          SizedBox(height: size.height * 0.2),
+        ],
+      );
 
   Widget _buildWebsiteFooter(Size size, TextTheme textTheme) {
     if (size.width > DeviceBreakpoints.tabletWidth) {

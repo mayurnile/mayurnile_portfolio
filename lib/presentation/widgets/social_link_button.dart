@@ -8,10 +8,15 @@ enum SocialLinkType { github, linkedin, discord }
 class SocialLinkButton extends StatefulWidget {
   final String icon;
   final SocialLinkType type;
+  final Color defaultColor;
+  final String launchURL;
+
   const SocialLinkButton({
     Key? key,
     required this.icon,
     required this.type,
+    required this.launchURL,
+    this.defaultColor = AppTheme.fontLightColor,
   }) : super(key: key);
 
   @override
@@ -25,6 +30,7 @@ class _SocialLinkButtonState extends State<SocialLinkButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: _launchURL,
       child: MouseRegion(
         onEnter: (_) => setState(() => isHovered = true),
         onExit: (_) => setState(() => isHovered = false),
@@ -36,7 +42,7 @@ class _SocialLinkButtonState extends State<SocialLinkButton> {
               padding: const EdgeInsets.only(bottom: 18.0),
               child: SvgPicture.asset(
                 widget.icon,
-                color: isHovered ? AppTheme.fontDarkColor : AppTheme.fontLightColor,
+                color: isHovered ? AppTheme.fontDarkColor : widget.defaultColor,
               ),
             ),
             // sizer container
@@ -50,4 +56,9 @@ class _SocialLinkButtonState extends State<SocialLinkButton> {
       ),
     );
   }
+
+  /// Member Functions
+  ///
+  ///
+  Future<void> _launchURL() async => Utils.openURL(widget.launchURL);
 }

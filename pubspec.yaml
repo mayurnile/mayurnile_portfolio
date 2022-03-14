@@ -18,6 +18,9 @@ dependencies:
   # Service Locator
   get_it: ^7.2.0
 
+  # Network
+  url_launcher: ^6.0.20
+
   # UI
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3

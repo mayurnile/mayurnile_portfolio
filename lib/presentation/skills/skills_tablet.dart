@@ -52,15 +52,30 @@ class SkillsTablet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.tablet),
+              const SkillBadge(
+                icon: IconAssets.flutter,
+                title: "Flutter",
+                type: BadgeType.tablet,
+                skillLevel: 8.0,
+              ),
               // spacing
               _buildSpacing(),
               // Flutter
-              const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.tablet),
+              const SkillBadge(
+                icon: IconAssets.dart,
+                title: "Dart",
+                type: BadgeType.tablet,
+                skillLevel: 6.0,
+              ),
               // spacing
               _buildSpacing(),
               // Flutter
-              const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.tablet),
+              const SkillBadge(
+                icon: IconAssets.firebase,
+                title: "Firebase",
+                type: BadgeType.tablet,
+                skillLevel: 7.0,
+              ),
             ],
           ),
           // spacing
@@ -71,11 +86,11 @@ class SkillsTablet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.tablet),
+              const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.tablet, skillLevel: 7.0),
               // spacing
               _buildSpacing(),
               // Flutter
-              const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.tablet),
+              const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.tablet, skillLevel: 5.0),
             ],
           ),
         ],

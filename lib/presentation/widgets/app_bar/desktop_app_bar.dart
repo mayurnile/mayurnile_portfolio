@@ -102,15 +102,7 @@ class __NavigationItemState extends State<_NavigationItem> {
     return Padding(
       padding: const EdgeInsets.only(left: 64.0),
       child: GestureDetector(
-        onTap: () {
-          if (widget.navKey.currentContext != null) {
-            Scrollable.ensureVisible(
-              widget.navKey.currentContext!,
-              duration: const Duration(seconds: 1),
-              curve: Curves.easeInOutCubic,
-            );
-          }
-        },
+        onTap: _onTap,
         child: MouseRegion(
           onEnter: (_) => setState(() => isSelected = true),
           onExit: (_) => setState(() => isSelected = widget.isSelected),
@@ -144,5 +136,22 @@ class __NavigationItemState extends State<_NavigationItem> {
         ),
       ),
     );
+  }
+
+  /// Member Functions
+  ///
+  ///
+  void _onTap() {
+    if (widget.navKey.currentContext != null) {
+      final RenderObject? renderObject = widget.navKey.currentContext?.findRenderObject();
+
+      if (renderObject != null) {
+        locator.get<NavBarController>().scrollController.position.ensureVisible(
+              renderObject,
+              duration: const Duration(seconds: 1),
+              curve: Curves.easeInOutCubic,
+            );
+      }
+    }
   }
 }

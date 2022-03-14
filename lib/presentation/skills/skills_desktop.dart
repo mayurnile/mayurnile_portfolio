@@ -60,23 +60,23 @@ class SkillsDesktop extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Flutter
-          const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.desktop),
+          const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.desktop, skillLevel: 8.0),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.desktop),
+          const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.desktop, skillLevel: 6.0),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.desktop),
+          const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.desktop, skillLevel: 7.0,),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.desktop),
+          const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.desktop, skillLevel: 7.0),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.desktop),
+          const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.desktop, skillLevel: 5.0),
         ],
       );
 

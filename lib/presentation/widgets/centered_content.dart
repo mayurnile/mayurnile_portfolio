@@ -14,7 +14,7 @@ class CenteredContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final ScrollController controller = ScrollController();
+    final ScrollController controller = ScrollController(keepScrollOffset: true);
 
     return LayoutBuilder(
       builder: (BuildContext _, BoxConstraints constraints) {
@@ -60,11 +60,11 @@ class CenteredContent extends StatelessWidget {
           children: [
             // social icons
             // github
-            const SocialLinkButton(icon: IconAssets.github, type: SocialLinkType.github),
+            const SocialLinkButton(icon: IconAssets.github, type: SocialLinkType.github, launchURL: Urls.githubLink),
             // linkedin
-            const SocialLinkButton(icon: IconAssets.linkedin, type: SocialLinkType.linkedin),
+            const SocialLinkButton(icon: IconAssets.linkedin, type: SocialLinkType.linkedin, launchURL: Urls.linkedinLink),
             // discord
-            const SocialLinkButton(icon: IconAssets.discord, type: SocialLinkType.discord),
+            const SocialLinkButton(icon: IconAssets.discord, type: SocialLinkType.discord, launchURL: Urls.discordLink),
             // accent line
             Container(
               height: size.height * 0.3,

@@ -18,3 +18,10 @@ export '../controllers/nav_bar_controller.dart';
 
 // service locator
 export '../di/locator.dart';
+
+// routing
+export '../routing/route_names.dart';
+export '../routing/routing.dart';
+
+// utilities
+export './utils.dart';

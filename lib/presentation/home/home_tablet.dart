@@ -87,7 +87,7 @@ class HomeTablet extends StatelessWidget {
               const SizedBox(height: 22.0),
               // download resume button
               AppButton(
-                onPressed: () {},
+                onPressed: () => Utils.openURL(Urls.resumeLink),
                 borderColor: AppTheme.secondaryColor,
                 title: 'Download Resume',
               ),

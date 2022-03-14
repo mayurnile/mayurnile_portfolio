@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/core.dart';
+
 class AppIconButton extends StatelessWidget {
   final bool isFilled;
   final Widget icon;
@@ -27,7 +29,7 @@ class AppIconButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             elevation: 0.0,
             primary: color,
-            padding: const EdgeInsets.all(24.0),
+            padding: isSmall ? const EdgeInsets.all(18.0) : const EdgeInsets.all(24.0),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           ),
           child: icon,
@@ -39,12 +41,7 @@ class AppIconButton extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: OutlinedButton(
           onPressed: onPressed,
-          style: OutlinedButton.styleFrom(
-            elevation: 0.0,
-            side: BorderSide(color: color),
-            padding: const EdgeInsets.all(24.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-          ),
+          style: AppTheme.getSquaredOutlinedButtonStyle(isSmall, color),
           child: icon,
         ),
       );

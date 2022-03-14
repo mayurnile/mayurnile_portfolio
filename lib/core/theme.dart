@@ -81,16 +81,77 @@ class AppTheme {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              elevation: 0.0,
-              primary: primaryColor,
-              padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 18.0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-              textStyle: const TextStyle(
-                fontFamily: 'Victor Mono',
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              )),
+            elevation: 0.0,
+            primary: primaryColor,
+            padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 18.0),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+            textStyle: const TextStyle(
+              fontFamily: 'Victor Mono',
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+
+  // Custom Themed Outlined Button Style
+  static ButtonStyle getOutlinedButtonStyle(bool isSmall, Color color) => ButtonStyle(
+        elevation: MaterialStateProperty.all(0.0),
+        side: MaterialStateProperty.all(BorderSide(color: color)),
+        padding: MaterialStateProperty.all(
+          isSmall
+              ? const EdgeInsets.symmetric(
+                  vertical: 18.0,
+                  horizontal: 18.0,
+                )
+              : const EdgeInsets.symmetric(
+                  vertical: 22.0,
+                  horizontal: 36.0,
+                ),
+        ),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) return color.withOpacity(0.05);
+            return null; // Defer to the widget's default.
+          },
+        ),
+        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) return color.withOpacity(0.12);
+            return null; // Defer to the widget's default.
+          },
+        ),
+      );
+
+  // Custom Themed Squared Outlined Button Style
+  static ButtonStyle getSquaredOutlinedButtonStyle(bool isSmall, Color color) => ButtonStyle(
+        elevation: MaterialStateProperty.all(0.0),
+        side: MaterialStateProperty.all(BorderSide(color: color)),
+        padding: MaterialStateProperty.all(
+          isSmall
+              ? const EdgeInsets.symmetric(
+                  vertical: 18.0,
+                  horizontal: 18.0,
+                )
+              : const EdgeInsets.symmetric(
+                  vertical: 24.0,
+                  horizontal: 24.0,
+                ),
+        ),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) return color.withOpacity(0.05);
+            return null; // Defer to the widget's default.
+          },
+        ),
+        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) return color.withOpacity(0.12);
+            return null; // Defer to the widget's default.
+          },
         ),
       );
 }

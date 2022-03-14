@@ -58,15 +58,15 @@ class SkillsMobile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.mobile),
+              const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.mobile, skillLevel: 8.0),
               // spacing
               _buildSpacing(),
               // Flutter
-              const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.mobile),
+              const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.mobile, skillLevel: 6.0),
               // spacing
               _buildSpacing(),
               // Flutter
-              const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.mobile),
+              const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.mobile, skillLevel: 7.0),
             ],
           ),
           // spacing
@@ -77,11 +77,11 @@ class SkillsMobile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.mobile),
+              const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.mobile, skillLevel: 7.0),
               // spacing
               _buildSpacing(),
               // Flutter
-              const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.mobile),
+              const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.mobile, skillLevel: 5.0),
             ],
           ),
         ],
