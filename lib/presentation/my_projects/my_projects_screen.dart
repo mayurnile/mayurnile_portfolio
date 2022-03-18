@@ -90,9 +90,7 @@ class MyProjectsScreen extends StatelessWidget {
         children: [
           // Flylady Project
           ProjectCard(
-            title: 'FlyLady Plus',
-            subtitle: 'Declutter and clean your home the way that millions of other ladies have !',
-            image: ImageAssets.flyladyBanner,
+            project: projectsList[0],
             position: ProjectCardPosition.center,
             type: type,
           ),
@@ -100,19 +98,15 @@ class MyProjectsScreen extends StatelessWidget {
           const SizedBox(height: 72.0),
           // Sacred Groves Project
           ProjectCard(
-            title: 'Sacred Groves',
-            subtitle: 'A platform to initate a motive that being, to save 25 million hectares of forest lands and inculcate nature reverence.',
-            image: ImageAssets.sacredGrovesBanner,
+            project: projectsList[1],
             position: ProjectCardPosition.left,
             type: type,
           ),
           // spacing
           const SizedBox(height: 72.0),
-          // Flylady Project
+          // Procom Project
           ProjectCard(
-            title: 'Procom Smart Home',
-            subtitle: 'A home automation app collated with Flutter, Firebase and MongoDB and implemented the design within 25 days of onboarding the project.',
-            image: ImageAssets.procomBanner,
+            project: projectsList[2],
             position: ProjectCardPosition.right,
             type: type,
           ),

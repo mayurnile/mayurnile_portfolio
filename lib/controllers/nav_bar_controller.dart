@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 enum NavBarState { home, skills, mywork, contact }
 
 class NavBarController extends GetxController {
-  // data variables
-  NavBarState navBarState = NavBarState.home;
-
   // global keys
   final GlobalKey homeGlobalKey = GlobalKey();
   final GlobalKey skillsGlobalKey = GlobalKey();
@@ -15,6 +12,9 @@ class NavBarController extends GetxController {
 
   // scroll controller
   late ScrollController scrollController;
+
+  // data variables 
+  NavBarState navBarState = NavBarState.home;
 
   /// [Method for updating nav bar state]
   ///

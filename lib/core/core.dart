@@ -25,3 +25,6 @@ export '../routing/routing.dart';
 
 // utilities
 export './utils.dart';
+
+// models
+export '../models/models.dart';

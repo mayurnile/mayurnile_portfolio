@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+
+import '../widgets.dart';
 
 import '../../../core/core.dart';
 
@@ -18,7 +19,7 @@ class DesktopAppBar extends StatelessWidget {
       child: Row(
         children: [
           // app logo
-          SvgPicture.asset(IconAssets.appLogo),
+          const AppLogo(),
           // spacing
           const Spacer(),
           // navigation items
@@ -82,6 +83,7 @@ class _NavigationItem extends StatefulWidget {
 class __NavigationItemState extends State<_NavigationItem> {
   // state variables
   late bool isSelected;
+  late double visibilityPercentage;
 
   @override
   void initState() {

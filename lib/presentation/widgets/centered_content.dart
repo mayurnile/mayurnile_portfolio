@@ -110,31 +110,34 @@ class __AnimatedEmailLinkState extends State<_AnimatedEmailLink> {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    return MouseRegion(
-      onEnter: (_) => setState(() => isHovered = true),
-      onExit: (_) => setState(() => isHovered = false),
-      child: Transform.translate(
-        offset: const Offset(2.0, 0.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // content
-            RotatedBox(
-              quarterTurns: 1,
-              child: AnimatedDefaultTextStyle(
+    return GestureDetector(
+      onTap: () => Utils.sendEmail(),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => isHovered = true),
+        onExit: (_) => setState(() => isHovered = false),
+        child: Transform.translate(
+          offset: const Offset(2.0, 0.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // content
+              RotatedBox(
+                quarterTurns: 1,
+                child: AnimatedDefaultTextStyle(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  style: textTheme.headline4!.copyWith(color: isHovered ? AppTheme.fontDarkColor : AppTheme.fontLightColor),
+                  child: const Text('mayurnile95@gmail.com'),
+                ),
+              ),
+              // sizer container
+              AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
-                style: textTheme.headline4!.copyWith(color: isHovered ? AppTheme.fontDarkColor : AppTheme.fontLightColor),
-                child: const Text('mayurnile95@gmail.com'),
+                height: isHovered ? 18.0 : 0.0,
               ),
-            ),
-            // sizer container
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-              height: isHovered ? 18.0 : 0.0,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

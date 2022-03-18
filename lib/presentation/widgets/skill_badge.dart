@@ -9,14 +9,14 @@ class SkillBadge extends StatefulWidget {
   final String icon;
   final String title;
   final BadgeType type;
-  final double skillLevel;
+  final double experience;
 
   const SkillBadge({
     Key? key,
     required this.icon,
     required this.title,
     required this.type,
-    required this.skillLevel,
+    required this.experience,
   }) : super(key: key);
 
   @override
@@ -34,7 +34,7 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
 
   // Animation Variables
   static const Duration _animDuration = Duration(milliseconds: 500);
-  static const Curve _animCurve = Curves.easeInOutCubic;
+  static const Curve _animCurve = Curves.easeOut;
 
   // device variables
   late TextTheme textTheme;
@@ -50,7 +50,7 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
     );
 
     // init tween
-    _textTween = Tween<double>(begin: 0.0, end: widget.skillLevel);
+    _textTween = Tween<double>(begin: 0.0, end: widget.experience);
 
     // init animation
     _textAnimation = _textTween.animate(CurvedAnimation(parent: _controller, curve: _animCurve));
@@ -65,21 +65,25 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
     double iconSize;
     double padding;
     double fontSize;
+    double subtitleFontSize;
     switch (widget.type) {
       case BadgeType.mobile:
         iconSize = 22.0;
         padding = 12.0;
         fontSize = 14.0;
+        subtitleFontSize = 10.0;
         break;
       case BadgeType.tablet:
         iconSize = 36.0;
         padding = 18.0;
         fontSize = 18.0;
+        subtitleFontSize = 14.0;
         break;
       case BadgeType.desktop:
         iconSize = 48.0;
         padding = 24.0;
         fontSize = 32.0;
+        subtitleFontSize = 18.0;
         break;
     }
 
@@ -140,7 +144,7 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
                     ),
                   ),
                 ),
-                // rating
+                // years of experience
                 Center(
                   child: AnimatedOpacity(
                     opacity: isHovered ? 1.0 : 0.0,
@@ -149,13 +153,28 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
                     child: AnimatedBuilder(
                       animation: _textAnimation,
                       builder: (context, child) {
-                        return Text(
-                          _textAnimation.value.toStringAsFixed(0),
-                          style: textTheme.headline1!.copyWith(
-                            fontFamily: 'Victor Mono',
-                            color: AppTheme.ternaryColor,
-                            fontSize: fontSize,
-                          ),
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // years of experience
+                            Text(
+                              _textAnimation.value.toStringAsFixed(1),
+                              style: textTheme.headline1!.copyWith(
+                                fontFamily: 'Victor Mono',
+                                color: AppTheme.ternaryColor,
+                                fontSize: fontSize,
+                              ),
+                            ),
+                            // subtitle
+                            Text(
+                              "Years",
+                              style: textTheme.bodyText2!.copyWith(
+                                fontFamily: 'Victor Mono',
+                                color: AppTheme.ternaryColor,
+                                fontSize: subtitleFontSize,
+                              ),
+                            ),
+                          ],
                         );
                       },
                     ),

@@ -15,18 +15,22 @@ class ContactScreen extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     TestimonialCardType testimonialCardType;
+    MyPhotoType myPhotoType;
     TextStyle screenTitleStyle = textTheme.headline3!.copyWith(color: AppTheme.ternaryColor);
 
     if (size.width > DeviceBreakpoints.desktopWidth) {
       testimonialCardType = TestimonialCardType.desktop;
+      myPhotoType = MyPhotoType.desktop;
     } else if (size.width < DeviceBreakpoints.mobileWidth) {
       testimonialCardType = TestimonialCardType.mobile;
+      myPhotoType = MyPhotoType.mobile;
       screenTitleStyle = textTheme.headline5!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );
     } else {
       testimonialCardType = TestimonialCardType.tablet;
+      myPhotoType = MyPhotoType.tablet;
       screenTitleStyle = textTheme.headline3!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
@@ -65,7 +69,7 @@ class ContactScreen extends StatelessWidget {
             style: screenTitleStyle,
           ),
           // contact section
-          _buildContactSection(size, textTheme, testimonialCardType),
+          _buildContactSection(size, textTheme, testimonialCardType, myPhotoType),
           // social media section
           if (testimonialCardType != TestimonialCardType.desktop) _buildSocialMediaSection(size, textTheme),
           // website footer
@@ -155,7 +159,12 @@ class ContactScreen extends StatelessWidget {
         ],
       );
 
-  Widget _buildContactSection(Size size, TextTheme textTheme, TestimonialCardType type) {
+  Widget _buildContactSection(
+    Size size,
+    TextTheme textTheme,
+    TestimonialCardType type,
+    MyPhotoType photoType,
+  ) {
     double textSize = size.width * 0.4;
     switch (type) {
       case TestimonialCardType.mobile:
@@ -173,6 +182,10 @@ class ContactScreen extends StatelessWidget {
       children: [
         // spacing
         const SizedBox(height: 32.0),
+        // my photo
+        MyPhoto(type: photoType),
+        // spacing
+        const SizedBox(height: 48.0),
         // sub title
         SizedBox(
           width: textSize,
@@ -186,7 +199,7 @@ class ContactScreen extends StatelessWidget {
         const SizedBox(height: 42.0),
         // say hi button
         AppButton(
-          onPressed: () {},
+          onPressed: () => Utils.sendEmail(),
           borderColor: AppTheme.ternaryColor,
           title: 'Say Hi!',
           isSmall: type == TestimonialCardType.mobile,

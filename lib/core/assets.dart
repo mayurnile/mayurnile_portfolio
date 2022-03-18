@@ -28,8 +28,22 @@ class ImageAssets {
   // base path
   static const String imagesBasePath = "assets/images";
 
+  // my phoyo
+  static const String myPhoto = "$imagesBasePath/my_photo.png";
+
   // Project Banners
   static const String flyladyBanner = "$imagesBasePath/flylady.png";
   static const String sacredGrovesBanner = "$imagesBasePath/sacred_groves.png";
   static const String procomBanner = "$imagesBasePath/procom.png";
+}
+
+class AnimationAssets {
+  // base path
+  static const String animBasePath = "assets/logo";
+
+  // Logo
+  static const String logo = "$animBasePath/logo.png";
+
+  // Reverse Logo
+  static const String reverseLoading = "$animBasePath/reverse_loading.gif";
 }

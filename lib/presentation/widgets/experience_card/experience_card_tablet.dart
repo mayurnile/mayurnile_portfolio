@@ -5,19 +5,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import '../../../core/core.dart';
 
 class ExperienceCardTablet extends StatelessWidget {
-  final String companyName;
-  final String tenure;
-  final String jobTitle;
-  final String description;
+  final Experience experience;
   final Color color;
   final bool isLast;
 
   const ExperienceCardTablet({
     Key? key,
-    required this.companyName,
-    required this.tenure,
-    required this.jobTitle,
-    required this.description,
+    required this.experience,
     required this.color,
     this.isLast = false,
   }) : super(key: key);
@@ -55,7 +49,7 @@ class ExperienceCardTablet extends StatelessWidget {
           children: [
             // company name
             AutoSizeText(
-              companyName,
+              experience.companyName,
               textAlign: TextAlign.end,
               style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
               maxLines: 2,
@@ -67,7 +61,7 @@ class ExperienceCardTablet extends StatelessWidget {
               alignment: Alignment.centerRight,
               fit: BoxFit.scaleDown,
               child: Text(
-                tenure,
+                experience.tenure,
                 style: textTheme.headline4!.copyWith(color: AppTheme.fontLightColor),
               ),
             ),
@@ -110,7 +104,7 @@ class ExperienceCardTablet extends StatelessWidget {
           children: [
             // company name
             AutoSizeText(
-              jobTitle,
+              experience.jobTitle,
               style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
               maxLines: 3,
               minFontSize: 12.0,
@@ -119,7 +113,7 @@ class ExperienceCardTablet extends StatelessWidget {
             const SizedBox(height: 12.0),
             // tenture
             AutoSizeText(
-              description,
+              experience.description,
               style: textTheme.bodyText2,
               maxLines: 5,
             ),

@@ -5,7 +5,7 @@ import 'package:flutter/gestures.dart';
 import '../../core/core.dart';
 
 const int defaultNormalScrollAnimationLengthMS = 600;
-const int defaultScrollSpeed = 500;
+const int defaultScrollSpeed = 300;
 
 class SmoothScroll extends StatefulWidget {
   ///Same ScrollController as the child widget's.
@@ -44,9 +44,15 @@ class _SmoothScrollState extends State<SmoothScroll> {
   void initState() {
     super.initState();
 
-    widget.controller.addListener(() {
-      _scroll = widget.controller.offset;
-    });
+    widget.controller.addListener(scrollListener);
+  }
+
+  @override
+  void didUpdateWidget(covariant SmoothScroll oldWidget) {
+    if (widget.controller.hasListeners == false) {
+      widget.controller.addListener(scrollListener);
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -81,4 +87,9 @@ class _SmoothScrollState extends State<SmoothScroll> {
       );
     });
   }
+
+  /// Member Functions
+  ///
+  ///
+  void scrollListener() => _scroll = widget.controller.offset;
 }

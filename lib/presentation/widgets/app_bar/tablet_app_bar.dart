@@ -28,16 +28,30 @@ class TabletAppBar extends StatelessWidget {
       child: Row(
         children: [
           // app logo
-          SvgPicture.asset(
-            IconAssets.appLogo,
-            height: 42.0,
-            width: 72.0,
+          GestureDetector(
+            onTap: () {
+              final NavBarController navBarController = locator.get<NavBarController>();
+              final RenderObject? renderObject = navBarController.homeGlobalKey.currentContext?.findRenderObject();
+              if (renderObject != null) {
+                navBarController.scrollController.position.ensureVisible(
+                  renderObject,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeInOutCubic,
+                );
+              }
+            },
+            child: SvgPicture.asset(
+              IconAssets.appLogo,
+              height: 42.0,
+              width: 72.0,
+            ),
           ),
           // spacing
           const Spacer(),
           // navigation items
           const Icon(
             Icons.menu,
+            size: 36.0,
             color: AppTheme.secondaryColor,
           ),
           // _buildNavigationItems(),

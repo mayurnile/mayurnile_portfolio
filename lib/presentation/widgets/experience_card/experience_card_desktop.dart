@@ -4,19 +4,13 @@ import 'package:dotted_border/dotted_border.dart';
 import '../../../core/core.dart';
 
 class ExperienceCardDesktop extends StatelessWidget {
-  final String companyName;
-  final String tenure;
-  final String jobTitle;
-  final String description;
+  final Experience experience;
   final Color color;
   final bool isLast;
 
   const ExperienceCardDesktop({
     Key? key,
-    required this.companyName,
-    required this.tenure,
-    required this.jobTitle,
-    required this.description,
+    required this.experience,
     required this.color,
     this.isLast = false,
   }) : super(key: key);
@@ -54,7 +48,7 @@ class ExperienceCardDesktop extends StatelessWidget {
           children: [
             // company name
             Text(
-              companyName,
+              experience.companyName,
               textAlign: TextAlign.end,
               style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
             ),
@@ -62,7 +56,7 @@ class ExperienceCardDesktop extends StatelessWidget {
             const SizedBox(height: 12.0),
             // tenture
             Text(
-              tenure,
+              experience.tenure,
               style: textTheme.headline4!.copyWith(color: AppTheme.fontLightColor),
             ),
           ],
@@ -104,14 +98,14 @@ class ExperienceCardDesktop extends StatelessWidget {
           children: [
             // company name
             Text(
-              jobTitle,
+              experience.jobTitle,
               style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
             ),
             // spacing
             const SizedBox(height: 12.0),
             // tenture
             Text(
-              description,
+              experience.description,
               style: textTheme.bodyText2,
             ),
           ],

@@ -5,19 +5,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import '../../../core/core.dart';
 
 class ExperienceCardMobile extends StatelessWidget {
-  final String companyName;
-  final String tenure;
-  final String jobTitle;
-  final String description;
+  final Experience experience;
   final Color color;
   final bool isLast;
 
   const ExperienceCardMobile({
     Key? key,
-    required this.companyName,
-    required this.tenure,
-    required this.jobTitle,
-    required this.description,
+    required this.experience,
     required this.color,
     this.isLast = false,
   }) : super(key: key);
@@ -49,15 +43,15 @@ class ExperienceCardMobile extends StatelessWidget {
   ///
   ///
   Widget _buildCompanyDetails(Size size, TextTheme textTheme) => SizedBox(
-        width: size.width * 0.27,
+        width: size.width * 0.22,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             // company name
             AutoSizeText(
-              companyName,
+              experience.companyName,
               textAlign: TextAlign.end,
-              style: textTheme.headline4!.copyWith(fontFamily: 'Josefin Sans'),
+              style: textTheme.headline5!.copyWith(fontFamily: 'Josefin Sans'),
               maxLines: 2,
             ),
             // spacing
@@ -67,7 +61,7 @@ class ExperienceCardMobile extends StatelessWidget {
               alignment: Alignment.centerRight,
               fit: BoxFit.scaleDown,
               child: Text(
-                tenure,
+                experience.tenure,
                 style: textTheme.headline5!.copyWith(color: AppTheme.fontLightColor),
               ),
             ),
@@ -76,7 +70,6 @@ class ExperienceCardMobile extends StatelessWidget {
       );
 
   Widget _buildTimelineMarker(Size size) => SizedBox(
-        // width: size.width * 0.05,
         child: Column(
           children: [
             // center dot
@@ -85,10 +78,10 @@ class ExperienceCardMobile extends StatelessWidget {
               dashPattern: const [4, 8, 4, 8],
               color: Colors.white,
               borderType: BorderType.Circle,
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(6.0),
               child: Container(
-                height: 12.0,
-                width: 12.0,
+                height: 10.0,
+                width: 10.0,
                 decoration: BoxDecoration(shape: BoxShape.circle, color: color),
               ),
             ),
@@ -97,21 +90,21 @@ class ExperienceCardMobile extends StatelessWidget {
               DashedLine(
                 color: Colors.white,
                 gap: 6.0,
-                heightContainer: size.height * 0.12,
+                heightContainer: size.height * 0.3,
               ),
           ],
         ),
       );
 
   Widget _buildJobTitleAndDescription(Size size, TextTheme textTheme) => SizedBox(
-        width: size.width * 0.3,
+        width: size.width * 0.38,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // company name
             AutoSizeText(
-              jobTitle,
-              style: textTheme.headline4!.copyWith(fontFamily: 'Josefin Sans'),
+              experience.jobTitle,
+              style: textTheme.headline5!.copyWith(fontFamily: 'Josefin Sans'),
               maxLines: 3,
               minFontSize: 12.0,
             ),
@@ -119,9 +112,9 @@ class ExperienceCardMobile extends StatelessWidget {
             const SizedBox(height: 12.0),
             // tenture
             AutoSizeText(
-              description,
+              experience.description,
               style: textTheme.subtitle1,
-              maxLines: 5,
+              maxLines: 10,
             ),
           ],
         ),

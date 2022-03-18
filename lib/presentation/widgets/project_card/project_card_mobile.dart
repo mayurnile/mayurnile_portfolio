@@ -5,16 +5,12 @@ import './project_card.dart';
 import '../../../core/core.dart';
 
 class ProjectCardMobile extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String image;
+  final Project project;
   final ProjectCardPosition position;
 
   const ProjectCardMobile({
     Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.image,
+    required this.project,
     required this.position,
   }) : super(key: key);
 
@@ -82,7 +78,7 @@ class ProjectCardMobile extends StatelessWidget {
         right: 18.0,
         bottom: 18.0,
         child: Image.asset(
-          image,
+          project.image,
           fit: BoxFit.cover,
         ),
       );
@@ -108,14 +104,14 @@ class ProjectCardMobile extends StatelessWidget {
           children: [
             // app name
             Text(
-              title,
+              project.title,
               style: textTheme.headline4!.copyWith(fontFamily: 'Josefin Sans'),
             ),
             // spacing
             const SizedBox(height: 8.0),
             // description
             Text(
-              subtitle,
+              project.subtitle,
               style: textTheme.bodyText2!.copyWith(color: Colors.white),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -127,24 +123,26 @@ class ProjectCardMobile extends StatelessWidget {
               runSpacing: 12.0,
               children: [
                 // play store
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+                if (project.playStoreLink != null)
+                  ElevatedButton(
+                    onPressed: () => Utils.openURL(project.playStoreLink!),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+                    ),
+                    child: const Text('Play Store'),
                   ),
-                  child: const Text('Play Store'),
-                ),
                 // spacing
-                const SizedBox(width: 16.0),
+                if (project.playStoreLink != null) const SizedBox(width: 16.0),
                 // papp store
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    primary: AppTheme.ternaryColor,
-                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+                if (project.appStoreLink != null)
+                  ElevatedButton(
+                    onPressed: () => Utils.openURL(project.appStoreLink!),
+                    style: ElevatedButton.styleFrom(
+                      primary: AppTheme.ternaryColor,
+                      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+                    ),
+                    child: const Text('App Store'),
                   ),
-                  child: const Text('App Store'),
-                ),
               ],
             ),
           ],

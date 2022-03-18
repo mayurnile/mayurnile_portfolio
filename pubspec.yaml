@@ -21,12 +21,14 @@ dependencies:
   # Network
   url_launcher: ^6.0.20
 
+  # Animations
+  flutter_staggered_animations: ^1.0.0
+
   # UI
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   dotted_border: ^2.0.0+2
   auto_size_text: ^3.0.0
-  flutter_staggered_animations: ^1.0.0
   visibility_detector: ^0.2.2
 
 dev_dependencies:

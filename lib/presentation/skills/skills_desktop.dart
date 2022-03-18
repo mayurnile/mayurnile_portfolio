@@ -60,52 +60,68 @@ class SkillsDesktop extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Flutter
-          const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.desktop, skillLevel: 8.0),
+          const SkillBadge(
+            icon: IconAssets.flutter,
+            title: "Flutter",
+            type: BadgeType.desktop,
+            experience: 2.3,
+          ),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.desktop, skillLevel: 6.0),
+          const SkillBadge(
+            icon: IconAssets.dart,
+            title: "Dart",
+            type: BadgeType.desktop,
+            experience: 2.3,
+          ),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.desktop, skillLevel: 7.0,),
+          const SkillBadge(
+            icon: IconAssets.firebase,
+            title: "Firebase",
+            type: BadgeType.desktop,
+            experience: 2.0,
+          ),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.desktop, skillLevel: 7.0),
+          const SkillBadge(
+            icon: IconAssets.figma,
+            title: "Figma",
+            type: BadgeType.desktop,
+            experience: 1.5,
+          ),
           // spacing
           _buildSpacing(),
           // Flutter
-          const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.desktop, skillLevel: 5.0),
+          const SkillBadge(
+            icon: IconAssets.afterEffects,
+            title: "After Effects",
+            type: BadgeType.desktop,
+            experience: 4.0,
+          ),
         ],
       );
 
   Widget _buildWorkExperienceList() => Column(
-        children: const [
+        children: [
           // Digital Trons Experience
           ExperienceCard(
-            companyName: 'Digital Trons',
-            tenure: 'Jul 2021 - Present',
-            jobTitle: 'Sr. Flutter Developer',
-            description: 'Lorem ipsum...',
+            experience: experiencesList[0],
             color: AppTheme.primaryColor,
             type: ExperienceCardType.desktop,
           ),
           // Outshade Digital Media Experience
           ExperienceCard(
-            companyName: 'Outshade Digital Media',
-            tenure: 'May 2020 - Jun 2021',
-            jobTitle: 'Flutter Developer & UI/UX Designer',
-            description: 'Lorem ipsum...',
+            experience: experiencesList[1],
             color: AppTheme.secondaryColor,
             type: ExperienceCardType.desktop,
           ),
           // OETD Labs Experience
           ExperienceCard(
-            companyName: 'OETD Labs',
-            tenure: 'Dec 2019 - Apr 2020',
-            jobTitle: 'Flutter Developer',
-            description: 'Lorem ipsum...',
+            experience: experiencesList[2],
             color: AppTheme.ternaryColor,
             type: ExperienceCardType.desktop,
             isLast: true,

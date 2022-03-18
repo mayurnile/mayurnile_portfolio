@@ -25,4 +25,16 @@ class AnimationConfig {
         ),
         children: children,
       );
+
+  static List<Widget> rowToAnimatedList({required List<Widget> children}) => AnimationConfiguration.toStaggeredList(
+        duration: const Duration(milliseconds: 600),
+        delay: const Duration(seconds: 1),
+        childAnimationBuilder: (widget) => SlideAnimation(
+          horizontalOffset: 150.0,
+          child: FadeInAnimation(
+            child: widget,
+          ),
+        ),
+        children: children,
+      );
 }
