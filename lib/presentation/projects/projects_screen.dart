@@ -6,8 +6,8 @@ import '../widgets/widgets.dart';
 
 import '../../core/core.dart';
 
-class LandingScreen extends StatelessWidget {
-  const LandingScreen({Key? key}) : super(key: key);
+class ProjectsScreen extends StatelessWidget {
+  const ProjectsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class LandingScreen extends StatelessWidget {
       body: Column(
         children: [
           // App Bar
-          const MyAppBar(),
+          const ProjectsAppBar(),
           // Body
           Expanded(
             child: LayoutBuilder(builder: (BuildContext _, BoxConstraints constraints) {
               return CenteredContent(
                 builder: (BuildContext ctx, ScrollController controller) {
-                  locator.get<NavBarController>().landingScreenScrollController = controller;
+                  locator.get<NavBarController>().projectsScreenScrollController = controller;
 
                   if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
                     return SmoothScroll(
@@ -59,10 +59,8 @@ class LandingScreen extends StatelessWidget {
     final NavBarController navBarController = locator.get<NavBarController>();
 
     final List<Widget> screens = [
-      HomeScreen(key: navBarController.homeGlobalKey),
-      SkillsScreen(key: navBarController.skillsGlobalKey),
-      MyProjectsScreen(key: navBarController.myWorkGlobalKey),
-      ContactScreen(key: navBarController.contactGlobalKey),
+      AllProjectsScreen(key: navBarController.allProjectsGlobalKey),
+      ExperimentsScreen(key: navBarController.experimentsGlobalKey),
     ];
 
     return ScrollConfiguration(

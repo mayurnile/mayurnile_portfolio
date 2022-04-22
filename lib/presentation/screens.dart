@@ -1,5 +1,9 @@
+export './splash/splash_screen.dart';
 export './landing_screen/landing_screen.dart';
 export './home/home_screen.dart';
 export './skills/skills_screen.dart';
-export './my_projects/my_projects_screen.dart';
+export './my_work/my_works_screen.dart';
 export './contact/contact_screen.dart';
+export './projects/projects_screen.dart';
+export './all_projects/all_projects_screen.dart';
+export './experiments/experiments_screen.dart';

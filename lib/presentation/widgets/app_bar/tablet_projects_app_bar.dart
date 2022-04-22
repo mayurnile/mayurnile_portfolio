@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/core.dart';
 
-class TabletAppBar extends StatelessWidget {
+class TabletProjectsAppBar extends StatelessWidget {
   final bool isMobile;
 
-  const TabletAppBar({
+  const TabletProjectsAppBar({
     Key? key,
     required this.isMobile,
   }) : super(key: key);

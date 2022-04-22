@@ -147,10 +147,12 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
         ),
       );
 
-  Widget _buildImageFilters() => Positioned(
+  Widget _buildImageFilters() => AnimatedPositioned(
+        duration: _animDuration,
+        curve: _animCurve,
         left: 0.0,
         top: 0.0,
-        right: 18.0,
+        right: isHovered ? size.width * 0.35 : 18.0,
         bottom: 18.0,
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -169,12 +171,6 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // secondary color background filter
-            DecoratedBox(
-              decoration: BoxDecoration(
-                color: AppTheme.secondaryColor.withOpacity(0.8),
-              ),
-            ),
             // technologies used
             Positioned(
               left: isLeft ? 22.0 : null,
@@ -183,31 +179,18 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
               child: AnimatedOpacity(
                 duration: _animDuration,
                 opacity: isHovered ? 1.0 : 0.0,
-                child: Column(
-                  crossAxisAlignment: isLeft ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                child: Row(
                   children: [
-                    // title
-                    Text(
-                      'Technologies Used',
-                      style: textTheme.headline3!.copyWith(fontFamily: 'Victor Mono'),
-                    ),
+                    // flutter
+                    _buildTechnologyIcon(IconAssets.flutter),
                     // spacing
-                    const SizedBox(height: 8.0),
-                    // technologies
-                    Row(
-                      children: [
-                        // flutter
-                        _buildTechnologyIcon(IconAssets.flutter),
-                        // spacing
-                        const SizedBox(width: 12.0),
-                        // dart
-                        _buildTechnologyIcon(IconAssets.dart),
-                        // spacing
-                        const SizedBox(width: 12.0),
-                        // firebase
-                        _buildTechnologyIcon(IconAssets.firebase),
-                      ],
-                    ),
+                    const SizedBox(width: 12.0),
+                    // dart
+                    _buildTechnologyIcon(IconAssets.dart),
+                    // spacing
+                    const SizedBox(width: 12.0),
+                    // firebase
+                    _buildTechnologyIcon(IconAssets.firebase),
                   ],
                 ),
               ),
@@ -220,7 +203,7 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
         padding: const EdgeInsets.all(12.0),
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: AppTheme.primaryColor,
+          color: AppTheme.ternaryColor,
         ),
         child: SvgPicture.asset(
           icon,
@@ -295,7 +278,7 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
                 width: size.width * 0.25,
                 margin: const EdgeInsets.symmetric(vertical: 12.0),
                 padding: const EdgeInsets.all(12.0),
-                color: AppTheme.primaryColor,
+                color: AppTheme.secondaryColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: widget.project.description
@@ -317,7 +300,7 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
                     if (widget.project.playStoreLink != null)
                       ElevatedButton(
                         onPressed: () => Utils.openURL(widget.project.playStoreLink!),
-                        style: ElevatedButton.styleFrom(primary: AppTheme.secondaryColor),
+                        style: ElevatedButton.styleFrom(primary: AppTheme.primaryColor),
                         child: const Text('Play Store'),
                       ),
                     // spacing

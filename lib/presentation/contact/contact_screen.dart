@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../widgets/widgets.dart';
@@ -56,11 +55,7 @@ class ContactScreen extends StatelessWidget {
           // spacing
           _buildSpace(testimonialCardType),
           // testimonial section
-          _buildTestimonialSection(testimonialCardType),
-          // spacing
-          SizedBox(height: size.height * 0.05),
-          // testimonial actions
-          _buildActionButtons(testimonialCardType),
+          TestimonialSection(cardType: testimonialCardType),
           // spacing
           SizedBox(height: size.height * 0.15),
           // title
@@ -73,7 +68,7 @@ class ContactScreen extends StatelessWidget {
           // social media section
           if (testimonialCardType != TestimonialCardType.desktop) _buildSocialMediaSection(size, textTheme),
           // website footer
-          _buildWebsiteFooter(size, textTheme),
+          const WebsiteFooter(),
           // spacing
           SizedBox(height: size.height * 0.05),
         ],
@@ -94,70 +89,6 @@ class ContactScreen extends StatelessWidget {
         return const SizedBox(height: 72.0);
     }
   }
-
-  Widget _buildTestimonialSection(TestimonialCardType cardType) => LayoutBuilder(
-        builder: (_, BoxConstraints constraints) {
-          double maxWidth = constraints.maxWidth * 0.3;
-
-          switch (cardType) {
-            case TestimonialCardType.mobile:
-              maxWidth = constraints.maxWidth * 0.8;
-              break;
-            case TestimonialCardType.tablet:
-              maxWidth = constraints.maxWidth * 0.55;
-              break;
-            case TestimonialCardType.desktop:
-              maxWidth = constraints.maxWidth * 0.3;
-              break;
-          }
-
-          return SizedBox(
-            width: constraints.maxWidth,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // testimonial
-                TestimonialCard(
-                  testimonial:
-                      "Flawless designing when it comes to front end, skilled coder, easy to communicate with, quick learner, creative thinker. Pleasure working with Mayur !",
-                  givenBy: "Aditya Charan",
-                  companyName: "Smart Spider",
-                  cardWidth: maxWidth,
-                  type: cardType,
-                ),
-              ],
-            ),
-          );
-        },
-      );
-
-  Widget _buildActionButtons(TestimonialCardType type) => Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // left arrow
-          AppIconButton(
-            isFilled: false,
-            icon: SvgPicture.asset(IconAssets.arrowBack),
-            onPressed: () {},
-            color: AppTheme.secondaryColor,
-            isSmall: type != TestimonialCardType.desktop,
-          ),
-          //  desktop spacing
-          if (type == TestimonialCardType.desktop) const SizedBox(width: 42.0),
-          // other spacing
-          if (type != TestimonialCardType.desktop) const SizedBox(width: 18.0),
-          // right arrow
-          AppIconButton(
-            isFilled: true,
-            icon: SvgPicture.asset(IconAssets.arrowForward),
-            onPressed: () {},
-            color: AppTheme.ternaryColor,
-            isSmall: type != TestimonialCardType.desktop,
-          ),
-        ],
-      );
 
   Widget _buildContactSection(
     Size size,
@@ -255,44 +186,4 @@ class ContactScreen extends StatelessWidget {
           SizedBox(height: size.height * 0.2),
         ],
       );
-
-  Widget _buildWebsiteFooter(Size size, TextTheme textTheme) {
-    if (size.width > DeviceBreakpoints.tabletWidth) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // left part
-            Text(
-              "Designed & Developed by Mayur Nile",
-              style: textTheme.bodyText2!.copyWith(fontFamily: 'Victor Mono'),
-            ),
-            // right part
-            Text(
-              "Built with Flutter 💙",
-              style: textTheme.bodyText2!.copyWith(fontFamily: 'Victor Mono'),
-            ),
-          ],
-        ),
-      );
-    } else {
-      return Column(
-        children: [
-          // top part
-          Text(
-            "Designed & Developed by Mayur Nile",
-            style: textTheme.bodyText2!.copyWith(fontFamily: 'Victor Mono'),
-          ),
-          // spacing
-          const SizedBox(height: 12.0),
-          // bottom part
-          Text(
-            "Built with Flutter 💙",
-            style: textTheme.bodyText2!.copyWith(fontFamily: 'Victor Mono'),
-          ),
-        ],
-      );
-    }
-  }
 }

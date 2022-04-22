@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../core/core.dart';
 
 class AppLogo extends StatefulWidget {
-  const AppLogo({Key? key}) : super(key: key);
+  final bool isHome;
+
+  const AppLogo({Key? key, this.isHome = true}) : super(key: key);
 
   @override
   State<AppLogo> createState() => _AppLogoState();
@@ -16,17 +18,7 @@ class _AppLogoState extends State<AppLogo> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        final NavBarController navBarController = locator.get<NavBarController>();
-        final RenderObject? renderObject = navBarController.homeGlobalKey.currentContext?.findRenderObject();
-        if (renderObject != null) {
-          navBarController.scrollController.position.ensureVisible(
-            renderObject,
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeInOutCubic,
-          );
-        }
-      },
+      onTap: widget.isHome ? navigateToTop : navigateToHome,
       child: MouseRegion(
         onEnter: (_) => setState(() => isHovered = true),
         onExit: (_) => setState(() => isHovered = false),
@@ -36,5 +28,24 @@ class _AppLogoState extends State<AppLogo> {
         ),
       ),
     );
+  }
+
+  /// Member Functions
+  ///
+  ///
+  void navigateToTop() {
+    final NavBarController navBarController = locator.get<NavBarController>();
+    final RenderObject? renderObject = navBarController.homeGlobalKey.currentContext?.findRenderObject();
+    if (renderObject != null) {
+      navBarController.landingScreenScrollController.position.ensureVisible(
+        renderObject,
+        duration: const Duration(seconds: 1),
+        curve: Curves.easeInOutCubic,
+      );
+    }
+  }
+
+  void navigateToHome() {
+    locator.get<NavigationService>().removeAllAndPush(AppRoutes.landingRoute);
   }
 }

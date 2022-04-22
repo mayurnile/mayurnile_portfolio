@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 
 import '../../core/core.dart';
 
-const int defaultNormalScrollAnimationLengthMS = 500;
-const int defaultScrollSpeed = 10;
+const int defaultNormalScrollAnimationLengthMS = 600;
+const int defaultScrollSpeed = 100;
 
 class SmoothScroll extends StatefulWidget {
   ///Same ScrollController as the child widget's.
@@ -49,6 +49,7 @@ class _SmoothScrollState extends State<SmoothScroll> {
 
   @override
   void didUpdateWidget(covariant SmoothScroll oldWidget) {
+    // ignore: invalid_use_of_protected_member
     if (widget.controller.hasListeners == false) {
       widget.controller.addListener(scrollListener);
     }
@@ -62,20 +63,19 @@ class _SmoothScrollState extends State<SmoothScroll> {
         onPointerSignal: (pointerSignal) {
           int millis = widget.scrollAnimationLength;
           if (pointerSignal is PointerScrollEvent) {
-            // if (pointerSignal.scrollDelta.dy > 0) {
-            //   _scroll += pointerSignal.scrollDelta.dy;
-            // } else {
-            //   _scroll += pointerSignal.scrollDelta.dy;
-            // }
-            _scroll += pointerSignal.scrollDelta.dy;
+            if (pointerSignal.scrollDelta.dy > 0) {
+              _scroll += (pointerSignal.scrollDelta.dy + widget.scrollSpeed);
+            } else {
+              _scroll += (pointerSignal.scrollDelta.dy - widget.scrollSpeed);
+            }
 
             if (_scroll > widget.controller.position.maxScrollExtent) {
               _scroll = widget.controller.position.maxScrollExtent;
-              millis = widget.scrollAnimationLength ~/ 2;
+              millis = widget.scrollAnimationLength ~/ 4;
             }
             if (_scroll < 0) {
               _scroll = 0;
-              millis = widget.scrollAnimationLength ~/ 2;
+              millis = widget.scrollAnimationLength ~/ 4;
             }
 
             widget.controller.animateTo(

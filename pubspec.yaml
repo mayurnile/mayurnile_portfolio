@@ -20,6 +20,7 @@ dependencies:
 
   # Network
   url_launcher: ^6.0.20
+  url_strategy: ^0.2.0
 
   # Animations
   flutter_staggered_animations: ^1.0.0

@@ -6,6 +6,9 @@ class Project {
   final List<String> description;
   final String? playStoreLink;
   final String? appStoreLink;
+  final String? githubLink;
+  final String? figmaLink;
+  final String? packageLink;
 
   const Project({
     required this.projectNumber,
@@ -15,5 +18,8 @@ class Project {
     required this.description,
     this.playStoreLink,
     this.appStoreLink,
+    this.githubLink,
+    this.figmaLink,
+    this.packageLink,
   });
 }

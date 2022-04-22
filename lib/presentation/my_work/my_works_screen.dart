@@ -33,7 +33,7 @@ class MyProjectsScreen extends StatelessWidget {
     }
 
     return VisibilityDetector(
-      key: const ValueKey('/my-projects-desktop-view'),
+      key: const ValueKey('/my-work-desktop-view'),
       onVisibilityChanged: (visibilityInfo) {
         final double visiblePercentage = visibilityInfo.visibleFraction * 100;
 
@@ -59,7 +59,7 @@ class MyProjectsScreen extends StatelessWidget {
             SizedBox(height: size.height * 0.1),
             // view all projects button
             AppButton(
-              onPressed: () {},
+              onPressed: () => locator.get<NavigationService>().pushNamed(AppRoutes.allProjectsRoute),
               borderColor: AppTheme.secondaryColor,
               title: 'View All Projects',
               isSmall: projectCardType != ProjectCardType.desktop,

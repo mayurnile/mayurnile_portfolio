@@ -35,6 +35,13 @@ class ImageAssets {
   static const String flyladyBanner = "$imagesBasePath/flylady.png";
   static const String sacredGrovesBanner = "$imagesBasePath/sacred_groves.png";
   static const String procomBanner = "$imagesBasePath/procom.png";
+  static const String smartFileManagerBanner = "$imagesBasePath/smart_file_manager.png";
+  static const String myNotesBanner = "$imagesBasePath/my_notes.png";
+  static const String konnectBanner = "$imagesBasePath/konnect.png";
+  static const String twoStepBanner = "$imagesBasePath/two_step.png";
+  static const String shopifyBanner = "$imagesBasePath/shopify.png";
+  static const String travellerBanner = "$imagesBasePath/traveller.png";
+  static const String curvyUIBanner = "$imagesBasePath/curvy_ui.png";
 }
 
 class AnimationAssets {
@@ -46,4 +53,7 @@ class AnimationAssets {
 
   // Reverse Logo
   static const String reverseLoading = "$animBasePath/reverse_loading.gif";
+
+  // Loading Animations
+  static const String loading = "$animBasePath/loading_animation_long.gif";
 }

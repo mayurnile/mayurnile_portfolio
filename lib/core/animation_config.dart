@@ -5,7 +5,7 @@ class AnimationConfig {
   const AnimationConfig();
 
   static List<Widget> columnToAnimatedList({required List<Widget> children}) => AnimationConfiguration.toStaggeredList(
-        duration: const Duration(milliseconds: 600),
+        duration: const Duration(milliseconds: 1500),
         childAnimationBuilder: (widget) => SlideAnimation(
           verticalOffset: 100.0,
           child: FadeInAnimation(
@@ -16,7 +16,7 @@ class AnimationConfig {
       );
 
   static List<Widget> sideBarAnimatedList({required List<Widget> children}) => AnimationConfiguration.toStaggeredList(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 1500),
         childAnimationBuilder: (widget) => SlideAnimation(
           verticalOffset: -200.0,
           child: FadeInAnimation(

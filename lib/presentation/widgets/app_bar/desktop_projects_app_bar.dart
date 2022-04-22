@@ -5,8 +5,8 @@ import '../widgets.dart';
 
 import '../../../core/core.dart';
 
-class DesktopAppBar extends StatelessWidget {
-  const DesktopAppBar({Key? key}) : super(key: key);
+class DesktopProjectsAppBar extends StatelessWidget {
+  const DesktopProjectsAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,27 +37,15 @@ class DesktopAppBar extends StatelessWidget {
           children: [
             // home
             _NavigationItem(
-              title: '01.home',
-              isSelected: controller.navBarState == NavBarState.home,
-              navKey: controller.homeGlobalKey,
+              title: '01.projects',
+              isSelected: controller.projectsNavBarState == ProjectsNavBarState.projects,
+              navKey: controller.allProjectsGlobalKey,
             ),
             // skills
             _NavigationItem(
-              title: '02.skills',
-              isSelected: controller.navBarState == NavBarState.skills,
-              navKey: controller.skillsGlobalKey,
-            ),
-            // my work
-            _NavigationItem(
-              title: '03.my work',
-              isSelected: controller.navBarState == NavBarState.mywork,
-              navKey: controller.myWorkGlobalKey,
-            ),
-            // contact
-            _NavigationItem(
-              title: '04.contact',
-              isSelected: controller.navBarState == NavBarState.contact,
-              navKey: controller.contactGlobalKey,
+              title: '02.experiments',
+              isSelected: controller.projectsNavBarState == ProjectsNavBarState.experiments,
+              navKey: controller.experimentsGlobalKey,
             ),
           ],
         );
@@ -148,7 +136,7 @@ class __NavigationItemState extends State<_NavigationItem> {
       final RenderObject? renderObject = widget.navKey.currentContext?.findRenderObject();
 
       if (renderObject != null) {
-        locator.get<NavBarController>().landingScreenScrollController.position.ensureVisible(
+        locator.get<NavBarController>().projectsScreenScrollController.position.ensureVisible(
               renderObject,
               duration: const Duration(seconds: 1),
               curve: Curves.easeInOutCubic,
