@@ -82,19 +82,11 @@ class AllProjectsScreen extends StatelessWidget {
   Widget _buildProjectsList(AllProjectCardType type) => AnimationLimiter(
         child: ListView.builder(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: allProjectsList.length,
-          itemBuilder: (_, index) => AnimationConfiguration.staggeredList(
-            position: index,
-            duration: const Duration(milliseconds: 1500),
-            child: SlideAnimation(
-              verticalOffset: 100.0,
-              child: FadeInAnimation(
-                child: AllProjectCard(
-                  project: allProjectsList[index],
-                  type: type,
-                ),
-              ),
-            ),
+          itemBuilder: (_, index) => AllProjectCard(
+            project: allProjectsList[index],
+            type: type,
           ),
         ),
       );

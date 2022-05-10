@@ -85,6 +85,8 @@ class TestimonialCard extends StatelessWidget {
                     child: AutoSizeText(
                       testimonial.testimonial,
                       textScaleFactor: 1.2,
+                      minFontSize: 8.0,
+                      softWrap: true,
                       style: const TextStyle(
                         fontFamily: 'Nunito',
                         color: Colors.black,

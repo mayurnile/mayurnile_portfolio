@@ -15,7 +15,7 @@ class DeviceBreakpoints {
 
 // App URLs
 class Urls {
-  static const resumeLink = "https://drive.google.com/file/d/10F6-PoXtm4JchlxxmxppguGBlhYo-CLf/view?usp=sharing";
+  static const resumeLink = "https://drive.google.com/file/d/1bfBMRAg2WNnCJazI_0gWcTeapLJhDOAw/view?usp=sharing";
   static const githubLink = "https://github.com/mayurnile";
   static const linkedinLink = "https://www.linkedin.com/in/mayurnile/";
   static const discordLink = "https://www.discord.com/users/DEATHHGOD#2595";
@@ -28,21 +28,21 @@ List<Experience> experiencesList = const [
     tenure: 'Jul 2021 - Present',
     jobTitle: 'Sr. Flutter Developer',
     description:
-        'Improvising and optimizing live applications to improve performance and solve user issues which lead to increase of user base by 10x. Transforming designs to application and integrating GraphQL APIs and AWS services.',
+        'Improvising and optimizing live applications to improve performance and solve user issues which lead to an increase in user base by 10x. Transforming designs to applications and integrating GraphQL APIs and AWS services.',
   ),
   Experience(
     companyName: 'Outshade Digital Media',
     tenure: 'May 2020 - Jun 2021',
     jobTitle: 'Flutter Developer & UI/UX Designer',
     description:
-        'Collaborated in research on designs and developed striking user experiences. Integrated design frameworks built using Figma in cross platform applications using Flutter & Dart. Integrated APIs for custom databases.',
+        'Collaborated in research on designs and developed striking user experiences. Integrated design frameworks built using Figma in cross-platform applications using Flutter & Dart. Integrated APIs for custom databases.',
   ),
   Experience(
     companyName: 'OETD Labs',
     tenure: 'Dec 2019 - Apr 2020',
     jobTitle: 'Flutter Developer',
     description:
-        'Embarked to develop visually appealing Android/iOS application using Flutter and Dart. Framed and develoeped mock apps for proposals to clients. Developed animations for flutter using Rive.',
+        'Embarked to develop visually appealing Android/iOS application using Flutter and Dart. Framed and developed mock apps for proposals to clients. Developed animations for flutter using Rive.',
   ),
 ];
 
@@ -51,11 +51,11 @@ List<Project> projectsList = const [
   Project(
     projectNumber: "01.",
     title: "FlyLady Plus",
-    subtitle: "Declutter and clean 🧹 your home the way that millions of other ladies have !",
+    subtitle: "Declutter and clean 🧹 your home the way that millions of other ladies have!",
     image: ImageAssets.flyladyBanner,
     description: [
-      "Helped in improving the quality of product, by resolving bugs and making necessary optimizations.",
-      "Handling project as a maintainer, adding functionalities and solving issues as per user reviews.",
+      "Helped in improving the quality of the product, by resolving bugs and making necessary optimizations.",
+      "Handling project as a maintainer, adding functionalities, and solving issues as per user reviews.",
     ],
     playStoreLink: "https://play.google.com/store/apps/details?id=com.FlyLady.Premium",
     appStoreLink: "https://apps.apple.com/us/app/flyladyplus/id1115477521",
@@ -66,7 +66,7 @@ List<Project> projectsList = const [
     subtitle: "An application through which you can help protect and preserve our Mother Nature 🌏",
     image: ImageAssets.sacredGrovesBanner,
     description: [
-      "A platform to initate a motive that being, to save 25 million hectares of forest lands and inculcate nature reverence.",
+      "A platform to initiate a motive that being, to save 25 million hectares of forest lands and inculcate nature reverence.",
       "Played a role of a front-end developer using flutter and with a detailed and precise backend developing by the team using Kubernetes cluster.",
     ],
     playStoreLink: "https://play.google.com/store/apps/details?id=com.outshade.sacredgroves",
@@ -75,10 +75,10 @@ List<Project> projectsList = const [
   Project(
     projectNumber: "03.",
     title: "Procom Smart Home",
-    subtitle: "An Smart Home application 📱 which works even when you don't have internet connection 📶.",
+    subtitle: "A Smart Home application 📱 which works even when you don't have an internet connection 📶.",
     image: ImageAssets.procomBanner,
     description: [
-      "Collaborated in building a home automation app collated with Flutter, Firebase and MongoDB and implemented the design within 25 days of onboarding the project.",
+      "Collaborated in building a home automation app collated with Flutter, Firebase, and MongoDB and implemented the design within 25 days of onboarding the project.",
       "Revamped the entire UI and designed front-end as well as back-end.",
     ],
     playStoreLink: "https://play.google.com/store/apps/details?id=com.shade.procom",
@@ -89,34 +89,22 @@ List<Project> projectsList = const [
 // Testimonial List
 List<Testimonial> testimonialsList = const [
   Testimonial(
-    givenBy: "Aditya Charan",
-    companyName: "Anser Indicus",
-    testimonial: "Flawless designing when it comes to front end, skilled coder, easy to communicate with, quick learner, creative thinker. Pleasure working with Mayur !",
+    givenBy: "Manish Gutta",
+    companyName: "CEO, Outshade Digital Media",
+    testimonial:
+        "Mayur has been the darling for Outshade, we truly love him. His skill in UI design and App Dev are great! He goes above and beyond to bring new designs and ideas of dev to the table, which makes us and the client pleasantly surprised.",
   ),
   Testimonial(
-    givenBy: "Manish Gutta",
-    companyName: "Outshade Digital Media",
+    givenBy: "Shubham Saxena",
+    companyName: "Co-Founder, Outshade Digital Media",
     testimonial:
-        "Mayur has been the darling for Outshade, we truly love him. His skill on UI design, App Dev are great! He goes above and beyond to bring new designs and ideas of dev on the table which make both us and the client pleasant surprised.",
+        "Mayur Nile proved to be a brilliant person to work with. When you get to connect with him, you'll discover an amazing person with exceptional skills! Excellent and result-driven. Works towards maximal customer satisfaction. He is not only a reliable and forward-thinking flutter developer but also an inspiring team player. The success achieved in his job required extensive knowledge and dedication. He is a truly phenomenal individual.",
   ),
-  // Testimonial(
-  //   givenBy: "Shubham Saxena",
-  //   companyName: "Outshade Digital Media",
-  //   testimonial:
-  //       "Mayur has been the darling for Outshade, we truly love him. His skill on UI design, App Dev are great! He goes above and beyond to bring new designs and ideas of dev on the table which make both us and the client pleasant surprised.",
-  // ),
-  // Testimonial(
-  //   givenBy: "Vikram Krishna",
-  //   companyName: "Outshade Digital Media",
-  //   testimonial:
-  //       "Mayur has been the darling for Outshade, we truly love him. His skill on UI design, App Dev are great! He goes above and beyond to bring new designs and ideas of dev on the table which make both us and the client pleasant surprised.",
-  // ),
-  // Testimonial(
-  //   givenBy: "Monisha Krishna",
-  //   companyName: "Outshade Digital Media",
-  //   testimonial:
-  //       "Mayur has been the darling for Outshade, we truly love him. His skill on UI design, App Dev are great! He goes above and beyond to bring new designs and ideas of dev on the table which make both us and the client pleasant surprised.",
-  // ),
+  Testimonial(
+    givenBy: "Aditya Charan",
+    companyName: "CEO, Anser Indicus",
+    testimonial: "Flawless designing when it comes to the front end, skilled coder, easy to communicate with, quick learner, creative thinker. Pleasure working with Mayur!",
+  ),
 ];
 
 // All Projects List
@@ -124,11 +112,11 @@ List<Project> allProjectsList = const [
   Project(
     projectNumber: "01.",
     title: "FlyLady Plus",
-    subtitle: "Declutter and clean 🧹 your home the way that millions of other ladies have !",
+    subtitle: "Declutter and clean 🧹 your home the way that millions of other ladies have!",
     image: ImageAssets.flyladyBanner,
     description: [
-      "Helped in improving the quality of product, by resolving bugs and making necessary optimizations.",
-      "Handling project as a maintainer, adding functionalities and solving issues as per user reviews.",
+      "Helped in improving the quality of the product, by resolving bugs and making necessary optimizations.",
+      "Handling project as a maintainer, adding functionalities, and solving issues as per user reviews.",
     ],
     playStoreLink: "https://play.google.com/store/apps/details?id=com.FlyLady.Premium",
     appStoreLink: "https://apps.apple.com/us/app/flyladyplus/id1115477521",
@@ -139,7 +127,7 @@ List<Project> allProjectsList = const [
     subtitle: "An application through which you can help protect and preserve our Mother Nature 🌏",
     image: ImageAssets.sacredGrovesBanner,
     description: [
-      "A platform to initate a motive that being, to save 25 million hectares of forest lands and inculcate nature reverence.",
+      "A platform to initiate a motive that being, to save 25 million hectares of forest lands and inculcate nature reverence.",
       "Played a role of a front-end developer using flutter and with a detailed and precise backend developing by the team using Kubernetes cluster.",
     ],
     playStoreLink: "https://play.google.com/store/apps/details?id=com.outshade.sacredgroves",
@@ -148,10 +136,10 @@ List<Project> allProjectsList = const [
   Project(
     projectNumber: "03.",
     title: "Procom Smart Home",
-    subtitle: "An Smart Home application 📱 which works even when you don't have internet connection 📶.",
+    subtitle: "A Smart Home application 📱 which works even when you don't have an internet connection 📶.",
     image: ImageAssets.procomBanner,
     description: [
-      "Collaborated in building a home automation app collated with Flutter, Firebase and MongoDB and implemented the design within 25 days of onboarding the project.",
+      "Collaborated in building a home automation app collated with Flutter, Firebase, and MongoDB and implemented the design within 25 days of onboarding the project.",
       "Revamped the entire UI and designed front-end as well as back-end.",
     ],
     playStoreLink: "https://play.google.com/store/apps/details?id=com.shade.procom",
@@ -160,10 +148,10 @@ List<Project> allProjectsList = const [
   Project(
     projectNumber: "04.",
     title: "Smart File Manager",
-    subtitle: "A Smart application to manage your files in your device.",
+    subtitle: "A Smart application to manage your files on your device.",
     image: ImageAssets.smartFileManagerBanner,
     description: [
-      "This is my B.E. Final Year Project, which is a File Manager with a few other features that help the user keep his device bloat-free and performing at its best all of the time.",
+      "This is my B.E. Final Year Project, which is a File Manager with a few other features that help the user keep his device bloat-free and performing at its best all the time.",
       "It's a File Manager, it can find Near and Exact Duplicate Images and it can also classify memes from images",
     ],
     githubLink: "https://github.com/mayurnile/smart_file_manager",
@@ -175,8 +163,8 @@ List<Project> allProjectsList = const [
     subtitle: "A notes managing app made using Flutter & Firebase.",
     image: ImageAssets.myNotesBanner,
     description: [
-      "An simple and intuitive app for taking down all your notes with images.",
-      "You can also share a dynamic link of a particular to be viewed by other user.",
+      "A simple and intuitive app for taking down all your notes with images.",
+      "You can also share a dynamic link of a particular to be viewed by another user.",
     ],
     githubLink: "https://github.com/mayurnile/my_notes",
     figmaLink: "https://www.figma.com/file/s3kAQrAKGjYz6su5iFqRcN/My-Notes?node-id=4%3A152",
@@ -188,7 +176,7 @@ List<Project> allProjectsList = const [
     image: ImageAssets.konnectBanner,
     description: [
       "Konnect is a social media app that seeks to mimic the features of other social media apps.",
-      "It has a new appearance and syncs with your contacts, allowing you to see who else is on the platform and, of course, allowing you to chat with your friends in real time.",
+      "It has a new appearance and syncs with your contacts, allowing you to see who else is on the platform and, of course, allowing you to chat with your friends in real-time.",
     ],
     githubLink: "https://github.com/mayurnile/konnect",
     figmaLink: "https://www.figma.com/file/Jae8oJL4C03tt0h2PFhArx/Konnect?node-id=0%3A1",
@@ -207,10 +195,10 @@ List<Project> allProjectsList = const [
   Project(
     projectNumber: "08.",
     title: "Shopify",
-    subtitle: "A Electronics Shopping Application.",
+    subtitle: "An Electronics Shopping Application.",
     image: ImageAssets.shopifyBanner,
     description: [
-      "It's an application that shows off an e-commerce application for selling electronics, along with some novel ways to add/remove goods from the basket or favourites section.",
+      "It's an application that shows off an e-commerce application for selling electronics, along with some novel ways to add/remove goods from the basket or favorites section.",
       "It also makes use of a 'sqflite' database for storing objects locally and displaying them even when the device is turned off.",
     ],
     githubLink: "https://github.com/mayurnile/shopify",
@@ -232,7 +220,7 @@ List<Project> allProjectsList = const [
     subtitle: "An example usage of curves in a application.",
     image: ImageAssets.curvyUIBanner,
     description: [
-      "It's a UI Template demonstrating use of curves in the application made with custom clippers and having cool bouncing twist to the animations.",
+      "It's a UI Template demonstrating the use of curves in the application made with custom clippers and has a cool bouncing twist to the animations.",
     ],
     githubLink: "https://github.com/mayurnile/curvy_ui",
   ),
@@ -250,7 +238,7 @@ List<Project> experimentsList = const [
   Project(
     projectNumber: '02.',
     title: 'multi_circular_slider',
-    subtitle: "A customizable multiple colored progress bar.",
+    subtitle: "A customizable multi-colored progress bar.",
     image: "",
     description: [],
     packageLink: "https://pub.dev/packages/multi_circular_slider",

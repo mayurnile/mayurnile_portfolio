@@ -64,7 +64,6 @@ class HomeMobile extends StatelessWidget {
                     ],
                   ),
                   style: textTheme.bodyText2,
-                  // textAlign: TextAlign.justify,
                 ),
               ),
               // spacing

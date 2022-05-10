@@ -30,6 +30,7 @@ class BulletPoint extends StatelessWidget {
                 text,
                 style: textTheme.bodyText2!.copyWith(color: Colors.white),
                 maxLines: 3,
+                overflow: TextOverflow.clip,
               ),
             ),
           ],
