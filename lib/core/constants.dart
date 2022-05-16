@@ -15,7 +15,7 @@ class DeviceBreakpoints {
 
 // App URLs
 class Urls {
-  static const resumeLink = "https://drive.google.com/file/d/1bfBMRAg2WNnCJazI_0gWcTeapLJhDOAw/view?usp=sharing";
+  static const resumeLink = "https://drive.google.com/file/d/1oiaoUYJE_DcDH3pK_waVCzA8rmPEFJfH/view?usp=sharing";
   static const githubLink = "https://github.com/mayurnile";
   static const linkedinLink = "https://www.linkedin.com/in/mayurnile/";
   static const discordLink = "https://www.discord.com/users/DEATHHGOD#2595";

@@ -39,8 +39,8 @@ class NavigationService {
     String routeName, {
     Map<String, dynamic> arguments = const {},
   }) async {
-    navigatorKey.currentState!.popUntil((_currentRoute) {
-      final bool result = _currentRoute.settings.name == routeName;
+    navigatorKey.currentState!.popUntil((navCurrentRoute) {
+      final bool result = navCurrentRoute.settings.name == routeName;
       if (result) {
         final String tempRoute = currentRoute;
         currentRoute = routeName;

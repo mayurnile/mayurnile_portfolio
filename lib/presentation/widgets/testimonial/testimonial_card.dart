@@ -70,12 +70,12 @@ class TestimonialCard extends StatelessWidget {
                     "\" ",
                     style: isSmall
                         ? textTheme.headline3!.copyWith(
-                            fontFamily: 'Nunito',
+                            fontFamily: 'Space Grotesk',
                             color: Colors.white54,
                             height: 0.7,
                           )
                         : textTheme.headline1!.copyWith(
-                            fontFamily: 'Nunito',
+                            fontFamily: 'Space Grotesk',
                             color: Colors.white54,
                             height: 0.7,
                           ),
@@ -88,7 +88,7 @@ class TestimonialCard extends StatelessWidget {
                       minFontSize: 8.0,
                       softWrap: true,
                       style: const TextStyle(
-                        fontFamily: 'Nunito',
+                        fontFamily: 'Space Grotesk',
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -96,36 +96,6 @@ class TestimonialCard extends StatelessWidget {
                   ),
                 ],
               ),
-              // Text.rich(
-              //   TextSpan(
-              //     text: "\" ",
-              //     style: isSmall
-              //         ? textTheme.headline3!.copyWith(
-              //             fontFamily: 'Nunito',
-              //             color: Colors.white54,
-              //             height: 0.7,
-              //           )
-              //         : textTheme.headline1!.copyWith(
-              //             fontFamily: 'Nunito',
-              //             color: Colors.white54,
-              //             height: 0.7,
-              //           ),
-              //     children: [
-              //       TextSpan(
-              //         text: testimonial.testimonial,
-              //         style: TextStyle(
-              //           fontFamily: 'Nunito',
-              //           fontSize: isSmall ? 12 : 18.0,
-              //           color: Colors.black,
-              //           fontWeight: FontWeight.bold,
-              //           height: 1.6,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              //   softWrap: true,
-              //   maxLines: 10,
-              // ),
             ),
           ),
         ],

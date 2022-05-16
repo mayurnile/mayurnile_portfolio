@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../widgets/widgets.dart';
@@ -79,15 +78,13 @@ class AllProjectsScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildProjectsList(AllProjectCardType type) => AnimationLimiter(
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: allProjectsList.length,
-          itemBuilder: (_, index) => AllProjectCard(
-            project: allProjectsList[index],
-            type: type,
-          ),
+  Widget _buildProjectsList(AllProjectCardType type) => ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: allProjectsList.length,
+        itemBuilder: (_, index) => AllProjectCard(
+          project: allProjectsList[index],
+          type: type,
         ),
       );
 }

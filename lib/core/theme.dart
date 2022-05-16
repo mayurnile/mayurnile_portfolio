@@ -61,19 +61,19 @@ class AppTheme {
             color: fontDarkColor,
           ),
           bodyText1: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Space Grotesk',
             fontSize: 24.0,
             fontWeight: FontWeight.w500,
             color: fontLightColor,
           ),
           bodyText2: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Space Grotesk',
             fontSize: 14.0,
             fontWeight: FontWeight.w400,
             color: fontLightColor,
           ),
           subtitle1: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Space Grotesk',
             fontSize: 10.0,
             fontWeight: FontWeight.w400,
             color: fontLightColor,

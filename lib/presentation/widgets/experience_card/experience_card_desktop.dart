@@ -136,6 +136,8 @@ class DashedLine extends StatelessWidget {
           final dashHeight = gap;
           final dashCount = (boxHeight / (2 * dashHeight)).floor();
           return Flex(
+            direction: Axis.vertical,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(dashCount, (_) {
               return SizedBox(
                 width: dashWidth,
@@ -145,8 +147,6 @@ class DashedLine extends StatelessWidget {
                 ),
               );
             }),
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            direction: Axis.vertical,
           );
         },
       ),

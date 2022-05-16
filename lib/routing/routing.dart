@@ -10,8 +10,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case AppRoutes.splashRoute:
       return getSlidePageRoute(const SplashScreen(), settings);
     case AppRoutes.landingRoute:
+      locator.get<NavBarController>().isNavigatedFromSplash = true;
+      locator.get<NavBarController>().update();
       return getSlidePageRoute(const LandingScreen(), settings);
     case AppRoutes.allProjectsRoute:
+      locator.get<NavBarController>().isNavigatedFromSplash = true;
+      locator.get<NavBarController>().update();
       return getSlidePageRoute(const ProjectsScreen(), settings);
     default:
       return getSlidePageRoute(const SplashScreen(), settings);

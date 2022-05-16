@@ -56,34 +56,34 @@ class _SlidePageRoute extends PageRouteBuilder {
             Widget child,
           ) {
             // Offset from offscreen to the right to fully on screen.
-            final Animatable<Offset> _kRightMiddleTween = Tween<Offset>(
+            final Animatable<Offset> kRightMiddleTween = Tween<Offset>(
               begin: const Offset(1.0, 0.0),
               end: Offset.zero,
             );
 
-            final Animation<Offset> _layerOnePositionAnimation = CurvedAnimation(
+            final Animation<Offset> layerOnePositionAnimation = CurvedAnimation(
               parent: animation,
               curve: const Interval(0.0, 0.4, curve: Curves.linearToEaseOut),
               reverseCurve: const Interval(0.0, 0.4, curve: Curves.easeInToLinear),
-            ).drive(_kRightMiddleTween);
+            ).drive(kRightMiddleTween);
 
-            final Animation<Offset> _layerTwoPositionAnimation = CurvedAnimation(
+            final Animation<Offset> layerTwoPositionAnimation = CurvedAnimation(
               parent: animation,
               curve: const Interval(0.3, 0.6, curve: Curves.linearToEaseOut),
               reverseCurve: const Interval(0.3, 0.6, curve: Curves.easeInToLinear),
-            ).drive(_kRightMiddleTween);
+            ).drive(kRightMiddleTween);
 
-            final Animation<Offset> _layerThreePositionAnimation = CurvedAnimation(
+            final Animation<Offset> layerThreePositionAnimation = CurvedAnimation(
               parent: animation,
               curve: const Interval(0.5, 0.8, curve: Curves.linearToEaseOut),
               reverseCurve: const Interval(0.5, 0.8, curve: Curves.easeInToLinear),
-            ).drive(_kRightMiddleTween);
+            ).drive(kRightMiddleTween);
 
-            final Animation<Offset> _childPositionAnimation = CurvedAnimation(
+            final Animation<Offset> childPositionAnimation = CurvedAnimation(
               parent: animation,
               curve: const Interval(0.6, 1.0, curve: Curves.linearToEaseOut),
               reverseCurve: const Interval(0.6, 1.0, curve: Curves.easeInToLinear),
-            ).drive(_kRightMiddleTween);
+            ).drive(kRightMiddleTween);
 
             final TextDirection textDirection = Directionality.of(context);
 
@@ -92,28 +92,28 @@ class _SlidePageRoute extends PageRouteBuilder {
               children: [
                 // green layer
                 SlideTransition(
-                  position: _layerOnePositionAnimation,
+                  position: layerOnePositionAnimation,
                   textDirection: textDirection,
                   transformHitTests: false,
                   child: Container(color: AppTheme.ternaryColor),
                 ),
                 // yellow layer
                 SlideTransition(
-                  position: _layerTwoPositionAnimation,
+                  position: layerTwoPositionAnimation,
                   textDirection: textDirection,
                   transformHitTests: false,
                   child: Container(color: AppTheme.primaryColor),
                 ),
                 // pink layer
                 SlideTransition(
-                  position: _layerThreePositionAnimation,
+                  position: layerThreePositionAnimation,
                   textDirection: textDirection,
                   transformHitTests: false,
                   child: Container(color: AppTheme.secondaryColor),
                 ),
                 // actual next page
                 SlideTransition(
-                  position: _childPositionAnimation,
+                  position: childPositionAnimation,
                   textDirection: textDirection,
                   transformHitTests: false,
                   child: child,

@@ -20,21 +20,21 @@ class ProjectCardMobile extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     // Calculating widget offset
-    Offset _offsetWidget;
+    Offset offsetWidget;
     switch (position) {
       case ProjectCardPosition.center:
-        _offsetWidget = Offset.zero;
+        offsetWidget = Offset.zero;
         break;
       case ProjectCardPosition.left:
-        _offsetWidget = Offset(-size.width * 0.05, 0.0);
+        offsetWidget = Offset(-size.width * 0.05, 0.0);
         break;
       case ProjectCardPosition.right:
-        _offsetWidget = Offset(size.width * 0.05, 0.0);
+        offsetWidget = Offset(size.width * 0.05, 0.0);
         break;
     }
 
     return Transform.translate(
-      offset: _offsetWidget,
+      offset: offsetWidget,
       child: SizedBox(
         height: size.height * 0.45,
         width: size.width * 0.65,

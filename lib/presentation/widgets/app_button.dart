@@ -19,6 +19,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
+      style: AppTheme.getOutlinedButtonStyle(isSmall, borderColor),
       onPressed: onPressed,
       child: Text(
         title,
@@ -27,7 +28,6 @@ class AppButton extends StatelessWidget {
               fontSize: isSmall ? 14.0 : 18.0,
             ),
       ),
-      style: AppTheme.getOutlinedButtonStyle(isSmall, borderColor),
     );
   }
 }

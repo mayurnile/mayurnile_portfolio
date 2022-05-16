@@ -20,16 +20,16 @@ class ProjectCardTablet extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     // Calculating widget offset
-    Offset _offsetWidget;
+    Offset offsetWidget;
     switch (position) {
       case ProjectCardPosition.center:
-        _offsetWidget = Offset.zero;
+        offsetWidget = Offset.zero;
         break;
       case ProjectCardPosition.left:
-        _offsetWidget = Offset(-size.width * 0.05, 0.0);
+        offsetWidget = Offset(-size.width * 0.05, 0.0);
         break;
       case ProjectCardPosition.right:
-        _offsetWidget = Offset(size.width * 0.05, 0.0);
+        offsetWidget = Offset(size.width * 0.05, 0.0);
         break;
     }
 
@@ -46,7 +46,7 @@ class ProjectCardTablet extends StatelessWidget {
     }
 
     return Transform.translate(
-      offset: _offsetWidget,
+      offset: offsetWidget,
       child: SizedBox(
         height: height,
         width: width,
@@ -126,7 +126,7 @@ class ProjectCardTablet extends StatelessWidget {
               project.subtitle,
               style: textTheme.headline4!.copyWith(
                 color: Colors.white,
-                fontFamily: 'Nunito',
+                fontFamily: 'Space Grotesk',
                 fontWeight: FontWeight.w300,
               ),
             ),

@@ -6,7 +6,7 @@ class Utils {
 
   /// Launch any URL passed into the method
   static Future<void> openURL(String url) async {
-    if (!await launch(url)) throw 'Could not launch $url';
+    if (!await launchUrl(Uri.parse(url))) throw 'Could not launch $url';
   }
 
   /// Launch to send email
@@ -21,6 +21,6 @@ class Utils {
       query: encodeQueryParameters(<String, String>{'subject': 'Hey! Let\'s have a conversation'}),
     );
 
-    launch(emailLaunchUri.toString());
+    launchUrl(Uri.parse(emailLaunchUri.toString()));
   }
 }

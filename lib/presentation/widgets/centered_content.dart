@@ -29,7 +29,7 @@ class CenteredContent extends StatelessWidget {
         return Scrollbar(
           controller: controller,
           interactive: true,
-          isAlwaysShown: true,
+          thumbVisibility: true,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: Row(
