@@ -24,6 +24,7 @@ class LandingScreen extends StatelessWidget {
                   locator.get<NavBarController>().landingScreenScrollController = controller;
 
                   if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
+                    // return _buildScreensList(context: context, controller: controller, isNeverScroll: false);
                     return SmoothScroll(
                       controller: controller,
                       child: _buildScreensList(

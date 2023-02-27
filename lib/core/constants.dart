@@ -15,7 +15,7 @@ class DeviceBreakpoints {
 
 // App URLs
 class Urls {
-  static const resumeLink = "https://drive.google.com/file/d/1oiaoUYJE_DcDH3pK_waVCzA8rmPEFJfH/view?usp=sharing";
+  static const resumeLink = "https://drive.google.com/file/d/168fSrNp9FqNtSzPIQt9-vtmPgl5_Bw8-/view?usp=sharing";
   static const githubLink = "https://github.com/mayurnile";
   static const linkedinLink = "https://www.linkedin.com/in/mayurnile/";
   static const discordLink = "https://www.discord.com/users/DEATHHGOD#2595";
@@ -88,6 +88,12 @@ List<Project> projectsList = const [
 
 // Testimonial List
 List<Testimonial> testimonialsList = const [
+  Testimonial(
+    givenBy: "Jimmy Thakkar",
+    companyName: "Co-Founder, Digital Trons",
+    testimonial:
+        "A youngest and one of the coolest employee of our company and like your cool nature your UI in your portfolio is just amazing and that shows your level of thinking differently at this age of your career. This shows your quality of coding as well your dedication level towards your work.",
+  ),
   Testimonial(
     givenBy: "Manish Gutta",
     companyName: "CEO, Outshade Digital Media",

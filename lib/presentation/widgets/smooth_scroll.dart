@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 
 import '../../core/core.dart';
 
-const int defaultNormalScrollAnimationLengthMS = 600;
-const int defaultScrollSpeed = 100;
+const int defaultNormalScrollAnimationLengthMS = 500;
+const double defaultScrollSpeed = 1.2;
 
 class SmoothScroll extends StatefulWidget {
   ///Same ScrollController as the child widget's.
@@ -15,7 +15,7 @@ class SmoothScroll extends StatefulWidget {
   final Widget child;
 
   ///Scroll speed px/scroll.
-  final int scrollSpeed;
+  final double scrollSpeed;
 
   ///Scroll animation length in milliseconds.
   final int scrollAnimationLength;
@@ -29,7 +29,7 @@ class SmoothScroll extends StatefulWidget {
     required this.child,
     this.scrollSpeed = defaultScrollSpeed,
     this.scrollAnimationLength = defaultNormalScrollAnimationLengthMS,
-    this.curve = Curves.easeOutCubic,
+    this.curve = Curves.fastLinearToSlowEaseIn,
   }) : super(key: key);
 
   @override
@@ -64,9 +64,9 @@ class _SmoothScrollState extends State<SmoothScroll> {
           int millis = widget.scrollAnimationLength;
           if (pointerSignal is PointerScrollEvent) {
             if (pointerSignal.scrollDelta.dy > 0) {
-              _scroll += (pointerSignal.scrollDelta.dy + widget.scrollSpeed);
+              _scroll += (pointerSignal.scrollDelta.dy * widget.scrollSpeed);
             } else {
-              _scroll += (pointerSignal.scrollDelta.dy - widget.scrollSpeed);
+              _scroll += (pointerSignal.scrollDelta.dy * widget.scrollSpeed);
             }
 
             if (_scroll > widget.controller.position.maxScrollExtent) {

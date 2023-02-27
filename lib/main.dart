@@ -7,7 +7,7 @@ import './di/locator.dart' as di;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   di.init();
-  setPathUrlStrategy();
+  // setPathUrlStrategy();
   runApp(const MyPortfolio());
 }
 
