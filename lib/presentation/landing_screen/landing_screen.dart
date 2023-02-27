@@ -1,3 +1,4 @@
+import 'package:dyn_mouse_scroll/dyn_mouse_scroll.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -22,24 +23,36 @@ class LandingScreen extends StatelessWidget {
               return CenteredContent(
                 builder: (BuildContext ctx, ScrollController controller) {
                   locator.get<NavBarController>().landingScreenScrollController = controller;
+                  final NavBarController navBarController = locator.get<NavBarController>();
 
-                  if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
-                    // return _buildScreensList(context: context, controller: controller, isNeverScroll: false);
-                    return SmoothScroll(
-                      controller: controller,
-                      child: _buildScreensList(
-                        context: context,
-                        controller: controller,
-                        isNeverScroll: true,
-                      ),
-                    );
-                  } else {
-                    return _buildScreensList(
-                      context: context,
-                      controller: controller,
-                      isNeverScroll: false,
-                    );
-                  }
+                  final List<Widget> screens = [
+                    HomeScreen(key: navBarController.homeGlobalKey),
+                    SkillsScreen(key: navBarController.skillsGlobalKey),
+                    MyProjectsScreen(key: navBarController.myWorkGlobalKey),
+                    ContactScreen(key: navBarController.contactGlobalKey),
+                  ];
+                  // if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
+                  // return _buildScreensList(context: context, controller: controller, isNeverScroll: false);
+                  return DynMouseScroll(
+                      // controller: controller,
+                      builder: (context, controller, physics) => ListView(
+                            controller: controller,
+                            physics: physics,
+                            children: screens,
+                          )
+                      // _buildScreensList(
+                      //   context: context,
+                      //   controller: controller,
+                      //   isNeverScroll: false,
+                      // ),
+                      );
+                  // } else {
+                  //   return _buildScreensList(
+                  //     context: context,
+                  //     controller: controller,
+                  //     isNeverScroll: false,
+                  //   );
+                  // }
                 },
               );
             }),

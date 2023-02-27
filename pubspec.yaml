@@ -31,6 +31,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   auto_size_text: ^3.0.0
   visibility_detector: ^0.3.3
+  dyn_mouse_scroll: ^1.0.7
 
 dev_dependencies:
   flutter_test:

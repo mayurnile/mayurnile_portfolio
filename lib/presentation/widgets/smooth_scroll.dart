@@ -62,7 +62,9 @@ class _SmoothScrollState extends State<SmoothScroll> {
       return Listener(
         onPointerSignal: (pointerSignal) {
           int millis = widget.scrollAnimationLength;
-          if (pointerSignal is PointerScrollEvent) {
+          print("Device :  ${pointerSignal.device}");
+          print("Kind : ${pointerSignal.kind}");
+          if (pointerSignal is PointerScrollEvent && pointerSignal.kind == PointerDeviceKind.mouse) {
             if (pointerSignal.scrollDelta.dy > 0) {
               _scroll += (pointerSignal.scrollDelta.dy * widget.scrollSpeed);
             } else {
