@@ -9,10 +9,10 @@ class ProjectCardMobile extends StatelessWidget {
   final ProjectCardPosition position;
 
   const ProjectCardMobile({
-    Key? key,
+    super.key,
     required this.project,
     required this.position,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -105,14 +105,14 @@ class ProjectCardMobile extends StatelessWidget {
             // app name
             Text(
               project.title,
-              style: textTheme.headline4!.copyWith(fontFamily: 'Josefin Sans'),
+              style: textTheme.headlineMedium!.copyWith(fontFamily: 'Josefin Sans'),
             ),
             // spacing
             const SizedBox(height: 8.0),
             // description
             Text(
               project.subtitle,
-              style: textTheme.bodyText2!.copyWith(color: Colors.white),
+              style: textTheme.bodyMedium!.copyWith(color: Colors.white),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -138,7 +138,7 @@ class ProjectCardMobile extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () => Utils.openURL(project.appStoreLink!),
                     style: ElevatedButton.styleFrom(
-                      primary: AppTheme.ternaryColor,
+                      backgroundColor: AppTheme.ternaryColor,
                       padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
                     ),
                     child: const Text('App Store'),

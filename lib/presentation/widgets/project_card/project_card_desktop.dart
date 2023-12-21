@@ -10,10 +10,10 @@ class ProjectCardDesktop extends StatefulWidget {
   final ProjectCardPosition position;
 
   const ProjectCardDesktop({
-    Key? key,
+    super.key,
     required this.project,
     required this.position,
-  }) : super(key: key);
+  });
 
   @override
   State<ProjectCardDesktop> createState() => _ProjectCardDesktopState();
@@ -70,7 +70,10 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
         alignment: Alignment.center,
         children: [
           // main visible content\
-          if (showLeft) _buildVisibleContentLeft() else _buildVisibleContentRight(),
+          if (showLeft)
+            _buildVisibleContentLeft()
+          else
+            _buildVisibleContentRight(),
           // on hovered content
           _buildAppDescription(widgetHeight),
         ],
@@ -207,6 +210,7 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
         ),
         child: SvgPicture.asset(
           icon,
+          // colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           color: Colors.white,
           height: 28.0,
           width: 28.0,
@@ -228,7 +232,8 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
               opacity: isHovered ? 0.0 : 1.0,
               child: Text(
                 widget.project.title,
-                style: textTheme.headline2!.copyWith(fontFamily: 'Josefin Sans'),
+                style: textTheme.displayMedium!
+                    .copyWith(fontFamily: 'Josefin Sans'),
               ),
             ),
             // spacing
@@ -240,7 +245,7 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
               opacity: isHovered ? 0.0 : 1.0,
               child: Text(
                 widget.project.subtitle,
-                style: textTheme.bodyText2!.copyWith(color: Colors.white),
+                style: textTheme.bodyMedium!.copyWith(color: Colors.white),
               ),
             ),
           ],
@@ -258,20 +263,24 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
           height: widgetHeight * 0.80,
           width: size.width * 0.25,
           child: Column(
-            crossAxisAlignment: widget.position == ProjectCardPosition.left ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            crossAxisAlignment: widget.position == ProjectCardPosition.left
+                ? CrossAxisAlignment.end
+                : CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // project number
               Text(
                 widget.project.projectNumber,
-                style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+                style: textTheme.displaySmall!
+                    .copyWith(color: AppTheme.ternaryColor),
               ),
               // spacing
               const SizedBox(height: 8.0),
               // project name
               Text(
                 widget.project.title,
-                style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
+                style: textTheme.displaySmall!
+                    .copyWith(fontFamily: 'Josefin Sans'),
               ),
               // project details
               Container(
@@ -294,22 +303,29 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
                 curve: _animCurve,
                 opacity: isHovered ? 1.0 : 0.0,
                 child: Row(
-                  mainAxisAlignment: widget.position == ProjectCardPosition.left ? MainAxisAlignment.end : MainAxisAlignment.start,
+                  mainAxisAlignment: widget.position == ProjectCardPosition.left
+                      ? MainAxisAlignment.end
+                      : MainAxisAlignment.start,
                   children: [
                     // play store
                     if (widget.project.playStoreLink != null)
                       ElevatedButton(
-                        onPressed: () => Utils.openURL(widget.project.playStoreLink!),
-                        style: ElevatedButton.styleFrom(primary: AppTheme.primaryColor),
+                        onPressed: () =>
+                            Utils.openURL(widget.project.playStoreLink!),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppTheme.primaryColor),
                         child: const Text('Play Store'),
                       ),
                     // spacing
-                    if (widget.project.playStoreLink != null) const SizedBox(width: 16.0),
+                    if (widget.project.playStoreLink != null)
+                      const SizedBox(width: 16.0),
                     // app store
                     if (widget.project.appStoreLink != null)
                       ElevatedButton(
-                        onPressed: () => Utils.openURL(widget.project.appStoreLink!),
-                        style: ElevatedButton.styleFrom(primary: AppTheme.ternaryColor),
+                        onPressed: () =>
+                            Utils.openURL(widget.project.appStoreLink!),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppTheme.ternaryColor),
                         child: const Text('App Store'),
                       ),
                   ],
@@ -331,7 +347,8 @@ class _ProjectCardDesktopState extends State<ProjectCardDesktop> {
     }
   }
 
-  Widget _buildAnimatedDescRight(Widget child, bool displaceLess) => AnimatedPositioned(
+  Widget _buildAnimatedDescRight(Widget child, bool displaceLess) =>
+      AnimatedPositioned(
         duration: _animDuration,
         curve: _animCurve,
         left: isHovered

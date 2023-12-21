@@ -7,7 +7,7 @@ enum MyPhotoType { mobile, tablet, desktop }
 class MyPhoto extends StatelessWidget {
   final MyPhotoType type;
 
-  const MyPhoto({Key? key, required this.type}) : super(key: key);
+  const MyPhoto({super.key, required this.type});
 
   @override
   Widget build(BuildContext context) {

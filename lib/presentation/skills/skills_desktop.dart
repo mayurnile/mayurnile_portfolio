@@ -6,7 +6,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class SkillsDesktop extends StatelessWidget {
-  const SkillsDesktop({Key? key}) : super(key: key);
+  const SkillsDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,10 @@ class SkillsDesktop extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // title
+          // const SectionTitle(title: '<my skills>', index: 1),
           Text(
             '<my skills>',
-            style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+            style: textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor),
           ),
           // spacing
           const SizedBox(height: 32.0),
@@ -37,9 +38,10 @@ class SkillsDesktop extends StatelessWidget {
           // spacing
           const SizedBox(height: 84.0),
           // work experience title
+          // const SectionTitle(title: '<my work experience>', index: 2),
           Text(
             '<my work experience>',
-            style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+            style: textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor),
           ),
           // spacing
           const SizedBox(height: 48.0),
@@ -58,76 +60,26 @@ class SkillsDesktop extends StatelessWidget {
   Widget _buildSkillsList() => Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Flutter
-          const SkillBadge(
-            icon: IconAssets.flutter,
-            title: "Flutter",
-            type: BadgeType.desktop,
-            experience: 2.3,
-          ),
-          // spacing
-          _buildSpacing(),
-          // Flutter
-          const SkillBadge(
-            icon: IconAssets.dart,
-            title: "Dart",
-            type: BadgeType.desktop,
-            experience: 2.3,
-          ),
-          // spacing
-          _buildSpacing(),
-          // Flutter
-          const SkillBadge(
-            icon: IconAssets.firebase,
-            title: "Firebase",
-            type: BadgeType.desktop,
-            experience: 2.0,
-          ),
-          // spacing
-          _buildSpacing(),
-          // Flutter
-          const SkillBadge(
-            icon: IconAssets.figma,
-            title: "Figma",
-            type: BadgeType.desktop,
-            experience: 1.5,
-          ),
-          // spacing
-          _buildSpacing(),
-          // Flutter
-          const SkillBadge(
-            icon: IconAssets.afterEffects,
-            title: "After Effects",
-            type: BadgeType.desktop,
-            experience: 4.0,
-          ),
-        ],
+        children: skillsList
+            .map(
+              (skill) => SkillBadgeV2(
+                title: skill.title,
+                icon: skill.icon,
+                experience: skill.experience,
+                type: BadgeType.desktop,
+              ),
+            )
+            .toList(),
       );
 
   Widget _buildWorkExperienceList() => Column(
-        children: [
-          // Digital Trons Experience
-          ExperienceCard(
-            experience: experiencesList[0],
-            color: AppTheme.primaryColor,
-            type: ExperienceCardType.desktop,
-          ),
-          // Outshade Digital Media Experience
-          ExperienceCard(
-            experience: experiencesList[1],
-            color: AppTheme.secondaryColor,
-            type: ExperienceCardType.desktop,
-          ),
-          // OETD Labs Experience
-          ExperienceCard(
-            experience: experiencesList[2],
-            color: AppTheme.ternaryColor,
-            type: ExperienceCardType.desktop,
-            isLast: true,
-          ),
-        ],
+        children: experiencesList
+            .map(
+              (experience) => ExperienceCard(
+                experience: experience,
+                type: ExperienceCardType.desktop,
+              ),
+            )
+            .toList(),
       );
-
-  Widget _buildSpacing() => const SizedBox(width: 42.0);
 }

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/core.dart';
+import 'skill_badge_v2.dart';
 
-enum BadgeType { mobile, tablet, desktop }
+// enum BadgeType { mobile, tablet, desktop }
 
 class SkillBadge extends StatefulWidget {
   final String icon;
@@ -12,12 +13,12 @@ class SkillBadge extends StatefulWidget {
   final double experience;
 
   const SkillBadge({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.type,
     required this.experience,
-  }) : super(key: key);
+  });
 
   @override
   State<SkillBadge> createState() => _SkillBadgeState();
@@ -159,7 +160,7 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
                             // years of experience
                             Text(
                               _textAnimation.value.toStringAsFixed(1),
-                              style: textTheme.headline1!.copyWith(
+                              style: textTheme.displayLarge!.copyWith(
                                 fontFamily: 'Victor Mono',
                                 color: AppTheme.ternaryColor,
                                 fontSize: fontSize,
@@ -168,7 +169,7 @@ class _SkillBadgeState extends State<SkillBadge> with SingleTickerProviderStateM
                             // subtitle
                             Text(
                               "Years",
-                              style: textTheme.bodyText2!.copyWith(
+                              style: textTheme.bodyMedium!.copyWith(
                                 fontFamily: 'Victor Mono',
                                 color: AppTheme.ternaryColor,
                                 fontSize: subtitleFontSize,

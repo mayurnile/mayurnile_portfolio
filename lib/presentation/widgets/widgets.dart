@@ -23,9 +23,11 @@ export './testimonial/testimonial_section.dart';
 // utils
 export './smooth_scroll.dart';
 export './skill_badge.dart';
+export './skill_badge_v2.dart';
 export './experience_card/experience_card.dart';
 export './project_card/project_card.dart';
 export './flip_card.dart';
+export './section_title.dart';
 
 // bullet point text
 export './bullet_point.dart';

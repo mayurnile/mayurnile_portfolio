@@ -3,21 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/core.dart';
 
-enum SocialLinkType { github, linkedin, discord }
-
 class SocialLinkButton extends StatefulWidget {
   final String icon;
-  final SocialLinkType type;
   final Color defaultColor;
   final String launchURL;
 
   const SocialLinkButton({
-    Key? key,
+    super.key,
     required this.icon,
-    required this.type,
     required this.launchURL,
     this.defaultColor = AppTheme.fontLightColor,
-  }) : super(key: key);
+  });
 
   @override
   State<SocialLinkButton> createState() => _SocialLinkButtonState();
@@ -42,6 +38,10 @@ class _SocialLinkButtonState extends State<SocialLinkButton> {
               padding: const EdgeInsets.only(bottom: 18.0),
               child: SvgPicture.asset(
                 widget.icon,
+                // colorFilter: ColorFilter.mode(
+                //   isHovered ? AppTheme.fontDarkColor : widget.defaultColor,
+                //   BlendMode.srcIn,
+                // ),
                 color: isHovered ? AppTheme.fontDarkColor : widget.defaultColor,
               ),
             ),

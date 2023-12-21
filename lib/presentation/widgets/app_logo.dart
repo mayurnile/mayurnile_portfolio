@@ -5,7 +5,7 @@ import '../../core/core.dart';
 class AppLogo extends StatefulWidget {
   final bool isHome;
 
-  const AppLogo({Key? key, this.isHome = true}) : super(key: key);
+  const AppLogo({super.key, this.isHome = true});
 
   @override
   State<AppLogo> createState() => _AppLogoState();

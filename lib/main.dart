@@ -7,12 +7,12 @@ import './di/locator.dart' as di;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   di.init();
-  // setPathUrlStrategy();
+  setPathUrlStrategy();
   runApp(const MyPortfolio());
 }
 
 class MyPortfolio extends StatelessWidget {
-  const MyPortfolio({Key? key}) : super(key: key);
+  const MyPortfolio({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -13,10 +13,10 @@ class ExperimentCard extends StatelessWidget {
   final ExperimentCardType type;
 
   const ExperimentCard({
-    Key? key,
+    super.key,
     required this.project,
     required this.type,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

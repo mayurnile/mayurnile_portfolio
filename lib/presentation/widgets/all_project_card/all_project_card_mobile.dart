@@ -9,8 +9,8 @@ class AllProjectCardMobile extends StatelessWidget {
 
   const AllProjectCardMobile({
     required this.project,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +57,14 @@ class AllProjectCardMobile extends StatelessWidget {
           // project number
           Text(
             project.projectNumber,
-            style: textTheme.headline4!.copyWith(color: AppTheme.ternaryColor),
+            style: textTheme.headlineMedium!.copyWith(color: AppTheme.ternaryColor),
           ),
           // spacing
           const SizedBox(height: 8.0),
           // project name
           Text(
             project.title,
-            style: textTheme.headline4!.copyWith(fontFamily: 'Josefin Sans'),
+            style: textTheme.headlineMedium!.copyWith(fontFamily: 'Josefin Sans'),
           ),
           // project details
           Container(
@@ -93,7 +93,7 @@ class AllProjectCardMobile extends StatelessWidget {
               if (project.playStoreLink != null)
                 ElevatedButton(
                   onPressed: () => Utils.openURL(project.playStoreLink!),
-                  style: ElevatedButton.styleFrom(primary: AppTheme.secondaryColor),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppTheme.secondaryColor),
                   child: const Text('Play Store'),
                 ),
               // spacing
@@ -102,14 +102,14 @@ class AllProjectCardMobile extends StatelessWidget {
               if (project.appStoreLink != null)
                 ElevatedButton(
                   onPressed: () => Utils.openURL(project.appStoreLink!),
-                  style: ElevatedButton.styleFrom(primary: AppTheme.ternaryColor),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppTheme.ternaryColor),
                   child: const Text('App Store'),
                 ),
               // github link
               if (project.githubLink != null)
                 ElevatedButton(
                   onPressed: () => Utils.openURL(project.githubLink!),
-                  style: ElevatedButton.styleFrom(primary: AppTheme.secondaryColor),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppTheme.secondaryColor),
                   child: const Text('Github'),
                 ),
               // spacing
@@ -118,7 +118,7 @@ class AllProjectCardMobile extends StatelessWidget {
               if (project.figmaLink != null)
                 ElevatedButton(
                   onPressed: () => Utils.openURL(project.figmaLink!),
-                  style: ElevatedButton.styleFrom(primary: AppTheme.ternaryColor),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppTheme.ternaryColor),
                   child: const Text('Figma'),
                 ),
             ],

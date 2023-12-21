@@ -10,13 +10,13 @@ class AppIconButton extends StatelessWidget {
   final bool isSmall;
 
   const AppIconButton({
-    Key? key,
+    super.key,
     required this.isFilled,
     required this.icon,
     required this.onPressed,
     required this.color,
     required this.isSmall,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class AppIconButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 0.0,
-            primary: color,
+            backgroundColor: color,
             padding: isSmall ? const EdgeInsets.all(18.0) : const EdgeInsets.all(24.0),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           ),

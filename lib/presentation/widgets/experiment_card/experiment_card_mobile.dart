@@ -7,9 +7,9 @@ class ExperimentCardMobile extends StatelessWidget {
   final Project project;
 
   const ExperimentCardMobile({
-    Key? key,
+    super.key,
     required this.project,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +39,20 @@ class ExperimentCardMobile extends StatelessWidget {
               fit: BoxFit.fitHeight,
             ),
             // package type
-            Text('Flutter Package', style: textTheme.subtitle1!.copyWith(fontFamily: 'Victor Mono')),
+            Text('Flutter Package', style: textTheme.titleMedium!.copyWith(fontFamily: 'Victor Mono')),
             // spacing
             const SizedBox(height: 12.0),
             // package title
             Text(
               project.title,
-              style: textTheme.headline5,
+              style: textTheme.headlineSmall,
             ),
             // spacing
             const SizedBox(height: 8.0),
             // package description
             Text(
               project.subtitle,
-              style: textTheme.subtitle1,
+              style: textTheme.titleMedium,
             ),
           ],
         ),

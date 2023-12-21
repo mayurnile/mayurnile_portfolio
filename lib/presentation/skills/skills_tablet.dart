@@ -5,7 +5,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class SkillsTablet extends StatelessWidget {
-  const SkillsTablet({Key? key}) : super(key: key);
+  const SkillsTablet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SkillsTablet extends StatelessWidget {
         // title
         Text(
           '<my skills>',
-          style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+          style: textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor),
         ),
         // spacing
         const SizedBox(height: 32.0),
@@ -29,7 +29,7 @@ class SkillsTablet extends StatelessWidget {
         // work experience title
         Text(
           '<my work experience>',
-          style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+          style: textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor),
         ),
         // spacing
         const SizedBox(height: 48.0),
@@ -52,73 +52,69 @@ class SkillsTablet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(
-                icon: IconAssets.flutter,
-                title: "Flutter",
+              SkillBadgeV2(
+                icon: skillsList[0].icon,
+                title: skillsList[0].title,
+                experience: skillsList[0].experience,
                 type: BadgeType.tablet,
-                experience: 2.3,
               ),
-              // spacing
-              _buildSpacing(),
               // Flutter
-              const SkillBadge(
-                icon: IconAssets.dart,
-                title: "Dart",
+              SkillBadgeV2(
+                icon: skillsList[1].icon,
+                title: skillsList[1].title,
+                experience: skillsList[1].experience,
                 type: BadgeType.tablet,
-                experience: 2.3,
               ),
-              // spacing
-              _buildSpacing(),
               // Flutter
-              const SkillBadge(
-                icon: IconAssets.firebase,
-                title: "Firebase",
+              SkillBadgeV2(
+                icon: skillsList[2].icon,
+                title: skillsList[2].title,
+                experience: skillsList[2].experience,
                 type: BadgeType.tablet,
-                experience: 2.0,
               ),
             ],
           ),
           // spacing
-          const SizedBox(height: 22.0),
+          const SizedBox(height: 16.0),
           // second row
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.tablet, experience: 1.5),
-              // spacing
-              _buildSpacing(),
+              SkillBadgeV2(
+                icon: skillsList[3].icon,
+                title: skillsList[3].title,
+                experience: skillsList[3].experience,
+                type: BadgeType.tablet,
+              ),
               // Flutter
-              const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.tablet, experience: 4.0),
+              SkillBadgeV2(
+                icon: skillsList[4].icon,
+                title: skillsList[4].title,
+                experience: skillsList[4].experience,
+                type: BadgeType.tablet,
+              ),
+              // Flutter
+              SkillBadgeV2(
+                icon: skillsList[5].icon,
+                title: skillsList[5].title,
+                experience: skillsList[5].experience,
+                type: BadgeType.tablet,
+              ),
             ],
           ),
         ],
       );
 
   Widget _buildWorkExperienceList() => Column(
-        children: [
-          // Digital Trons Experience
-          ExperienceCard(
-            experience: experiencesList[0],
-            color: AppTheme.primaryColor,
-            type: ExperienceCardType.tablet,
-          ),
-          // Outshade Digital Media Experience
-          ExperienceCard(
-            experience: experiencesList[1],
-            color: AppTheme.secondaryColor,
-            type: ExperienceCardType.tablet,
-          ),
-          // OETD Labs Experience
-          ExperienceCard(
-            experience: experiencesList[2],
-            color: AppTheme.ternaryColor,
-            type: ExperienceCardType.tablet,
-            isLast: true,
-          ),
-        ],
+        children: experiencesList
+            .map(
+              (experience) => ExperienceCard(
+                experience: experience,
+                type: ExperienceCardType.tablet,
+              ),
+            )
+            .toList(),
       );
-
-  Widget _buildSpacing() => const SizedBox(width: 36.0);
 }

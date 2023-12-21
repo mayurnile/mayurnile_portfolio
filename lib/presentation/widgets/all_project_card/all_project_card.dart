@@ -13,10 +13,10 @@ class AllProjectCard extends StatelessWidget {
   final AllProjectCardType type;
 
   const AllProjectCard({
-    Key? key,
+    super.key,
     required this.project,
     required this.type,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

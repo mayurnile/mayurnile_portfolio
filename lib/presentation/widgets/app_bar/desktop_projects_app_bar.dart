@@ -6,7 +6,7 @@ import '../widgets.dart';
 import '../../../core/core.dart';
 
 class DesktopProjectsAppBar extends StatelessWidget {
-  const DesktopProjectsAppBar({Key? key}) : super(key: key);
+  const DesktopProjectsAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +58,10 @@ class _NavigationItem extends StatefulWidget {
   final GlobalKey navKey;
 
   const _NavigationItem({
-    Key? key,
     required this.title,
     required this.isSelected,
     required this.navKey,
-  }) : super(key: key);
+  });
 
   @override
   __NavigationItemState createState() => __NavigationItemState();
@@ -103,7 +102,7 @@ class __NavigationItemState extends State<_NavigationItem> {
               // nav bar title
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 300),
-                style: textTheme.headline4!.copyWith(
+                style: textTheme.headlineMedium!.copyWith(
                   color: isSelected ? AppTheme.secondaryColor : AppTheme.fontLightColor,
                 ),
                 child: Text(widget.title),

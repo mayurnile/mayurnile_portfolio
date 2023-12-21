@@ -5,7 +5,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class SkillsMobile extends StatelessWidget {
-  const SkillsMobile({Key? key}) : super(key: key);
+  const SkillsMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SkillsMobile extends StatelessWidget {
         // title
         Text(
           '<my skills>',
-          style: textTheme.headline5!.copyWith(
+          style: textTheme.headlineSmall!.copyWith(
             color: AppTheme.ternaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -32,7 +32,7 @@ class SkillsMobile extends StatelessWidget {
         // work experience title
         Text(
           '<my work experience>',
-          style: textTheme.headline5!.copyWith(
+          style: textTheme.headlineSmall!.copyWith(
             color: AppTheme.ternaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -58,15 +58,26 @@ class SkillsMobile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.flutter, title: "Flutter", type: BadgeType.mobile, experience: 2.3),
-              // spacing
-              _buildSpacing(),
+              SkillBadgeV2(
+                icon: skillsList[0].icon,
+                title: skillsList[0].title,
+                experience: skillsList[0].experience,
+                type: BadgeType.mobile,
+              ),
               // Flutter
-              const SkillBadge(icon: IconAssets.dart, title: "Dart", type: BadgeType.mobile, experience: 2.3),
-              // spacing
-              _buildSpacing(),
+              SkillBadgeV2(
+                icon: skillsList[1].icon,
+                title: skillsList[1].title,
+                experience: skillsList[1].experience,
+                type: BadgeType.mobile,
+              ),
               // Flutter
-              const SkillBadge(icon: IconAssets.firebase, title: "Firebase", type: BadgeType.mobile, experience: 2.0),
+              SkillBadgeV2(
+                icon: skillsList[2].icon,
+                title: skillsList[2].title,
+                experience: skillsList[2].experience,
+                type: BadgeType.mobile,
+              ),
             ],
           ),
           // spacing
@@ -77,39 +88,39 @@ class SkillsMobile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Flutter
-              const SkillBadge(icon: IconAssets.figma, title: "Figma", type: BadgeType.mobile, experience: 1.5),
-              // spacing
-              _buildSpacing(),
+              SkillBadgeV2(
+                icon: skillsList[3].icon,
+                title: skillsList[3].title,
+                experience: skillsList[3].experience,
+                type: BadgeType.mobile,
+              ),
               // Flutter
-              const SkillBadge(icon: IconAssets.afterEffects, title: "After Effects", type: BadgeType.mobile, experience: 4.0),
+              SkillBadgeV2(
+                icon: skillsList[4].icon,
+                title: skillsList[4].title,
+                experience: skillsList[4].experience,
+                type: BadgeType.mobile,
+              ),
+              // Flutter
+              SkillBadgeV2(
+                icon: skillsList[5].icon,
+                title: skillsList[5].title,
+                experience: skillsList[5].experience,
+                type: BadgeType.mobile,
+              ),
             ],
           ),
         ],
       );
 
   Widget _buildWorkExperienceList() => Column(
-        children:  [
-          // Digital Trons Experience
-          ExperienceCard(
-            experience: experiencesList[0],
-            color: AppTheme.primaryColor,
-            type: ExperienceCardType.mobile,
-          ),
-          // Outshade Digital Media Experience
-          ExperienceCard(
-            experience: experiencesList[1],
-            color: AppTheme.secondaryColor,
-            type: ExperienceCardType.mobile,
-          ),
-          // OETD Labs Experience
-          ExperienceCard(
-            experience: experiencesList[2],
-            color: AppTheme.ternaryColor,
-            type: ExperienceCardType.mobile,
-            isLast: true,
-          ),
-        ],
+        children: experiencesList
+            .map(
+              (experience) => ExperienceCard(
+                experience: experience,
+                type: ExperienceCardType.mobile,
+              ),
+            )
+            .toList(),
       );
-
-  Widget _buildSpacing() => const SizedBox(width: 16.0);
 }

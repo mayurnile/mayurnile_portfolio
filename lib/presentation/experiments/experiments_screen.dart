@@ -6,7 +6,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class ExperimentsScreen extends StatelessWidget {
-  const ExperimentsScreen({Key? key}) : super(key: key);
+  const ExperimentsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,17 @@ class ExperimentsScreen extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     ExperimentCardType projectCardType;
-    TextStyle screenTitleStyle = textTheme.headline3!.copyWith(color: AppTheme.ternaryColor);
+    TextStyle screenTitleStyle = textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor);
 
     if (size.width < DeviceBreakpoints.tabletWidth) {
       projectCardType = ExperimentCardType.mobile;
-      screenTitleStyle = textTheme.headline5!.copyWith(
+      screenTitleStyle = textTheme.headlineSmall!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );
     } else if (size.width > DeviceBreakpoints.tabletWidth && size.width < DeviceBreakpoints.desktopWidth) {
       projectCardType = ExperimentCardType.tablet;
-      screenTitleStyle = textTheme.headline3!.copyWith(
+      screenTitleStyle = textTheme.displaySmall!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );

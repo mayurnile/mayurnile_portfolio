@@ -6,7 +6,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({Key? key}) : super(key: key);
+  const ContactScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,8 @@ class ContactScreen extends StatelessWidget {
 
     TestimonialCardType testimonialCardType;
     MyPhotoType myPhotoType;
-    TextStyle screenTitleStyle = textTheme.headline3!.copyWith(color: AppTheme.ternaryColor);
+    TextStyle screenTitleStyle =
+        textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor);
 
     if (size.width > DeviceBreakpoints.desktopWidth) {
       testimonialCardType = TestimonialCardType.desktop;
@@ -23,14 +24,14 @@ class ContactScreen extends StatelessWidget {
     } else if (size.width < DeviceBreakpoints.mobileWidth) {
       testimonialCardType = TestimonialCardType.mobile;
       myPhotoType = MyPhotoType.mobile;
-      screenTitleStyle = textTheme.headline5!.copyWith(
+      screenTitleStyle = textTheme.headlineSmall!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );
     } else {
       testimonialCardType = TestimonialCardType.tablet;
       myPhotoType = MyPhotoType.tablet;
-      screenTitleStyle = textTheme.headline3!.copyWith(
+      screenTitleStyle = textTheme.displaySmall!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );
@@ -42,7 +43,9 @@ class ContactScreen extends StatelessWidget {
         final double visiblePercentage = visibilityInfo.visibleFraction * 100;
 
         if (visiblePercentage > 25) {
-          locator.get<NavBarController>().updateNavBarState(NavBarState.contact);
+          locator
+              .get<NavBarController>()
+              .updateNavBarState(NavBarState.contact);
         }
       },
       child: Column(
@@ -64,9 +67,11 @@ class ContactScreen extends StatelessWidget {
             style: screenTitleStyle,
           ),
           // contact section
-          _buildContactSection(size, textTheme, testimonialCardType, myPhotoType),
+          _buildContactSection(
+              size, textTheme, testimonialCardType, myPhotoType),
           // social media section
-          if (testimonialCardType != TestimonialCardType.desktop) _buildSocialMediaSection(size, textTheme),
+          if (testimonialCardType != TestimonialCardType.desktop)
+            _buildSocialMediaSection(size, textTheme),
           // website footer
           const WebsiteFooter(),
           // spacing
@@ -114,15 +119,17 @@ class ContactScreen extends StatelessWidget {
         // spacing
         const SizedBox(height: 32.0),
         // my photo
-        MyPhoto(type: photoType),
+        // MyPhoto(type: photoType),
         // spacing
-        const SizedBox(height: 48.0),
+        // const SizedBox(height: 48.0),
         // sub title
         SizedBox(
           width: textSize,
           child: Text(
             "Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
-            style: type == TestimonialCardType.mobile ? textTheme.bodyText2 : textTheme.bodyText1,
+            style: type == TestimonialCardType.mobile
+                ? textTheme.bodyMedium
+                : textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),
         ),
@@ -136,7 +143,10 @@ class ContactScreen extends StatelessWidget {
           isSmall: type == TestimonialCardType.mobile,
         ),
         // spacing
-        SizedBox(height: type == TestimonialCardType.desktop ? size.height * 0.2 : size.height * 0.05),
+        SizedBox(
+            height: type == TestimonialCardType.desktop
+                ? size.height * 0.2
+                : size.height * 0.05),
       ],
     );
   }
@@ -146,19 +156,18 @@ class ContactScreen extends StatelessWidget {
           // subtitle text
           Text(
             'or connect using',
-            style: textTheme.headline6,
+            style: textTheme.titleLarge,
           ),
           // spacing
           const SizedBox(height: 32.0),
           // social media icons
-          Row(
+          const Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               // github
               SocialLinkButton(
                 icon: IconAssets.github,
-                type: SocialLinkType.github,
                 launchURL: Urls.githubLink,
                 defaultColor: AppTheme.fontDarkColor,
               ),
@@ -167,17 +176,15 @@ class ContactScreen extends StatelessWidget {
               // linkedin
               SocialLinkButton(
                 icon: IconAssets.linkedin,
-                type: SocialLinkType.linkedin,
                 launchURL: Urls.linkedinLink,
                 defaultColor: AppTheme.fontDarkColor,
               ),
               // spacing
               SizedBox(width: 18.0),
-              // discord
+              // instagram
               SocialLinkButton(
-                icon: IconAssets.discord,
-                type: SocialLinkType.discord,
-                launchURL: Urls.discordLink,
+                icon: IconAssets.instagram,
+                launchURL: Urls.instagramLink,
                 defaultColor: AppTheme.fontDarkColor,
               ),
             ],

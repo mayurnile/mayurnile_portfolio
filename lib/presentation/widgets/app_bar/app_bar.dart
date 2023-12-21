@@ -6,7 +6,7 @@ import './desktop_app_bar.dart';
 import '../../../core/core.dart';
 
 class MyAppBar extends StatelessWidget {
-  const MyAppBar({Key? key}) : super(key: key);
+  const MyAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

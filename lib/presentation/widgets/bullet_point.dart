@@ -5,7 +5,7 @@ class BulletPoint extends StatelessWidget {
   final double? totalWidth;
   final double? contentWidth;
 
-  const BulletPoint({Key? key, required this.text, this.totalWidth, this.contentWidth}) : super(key: key);
+  const BulletPoint({super.key, required this.text, this.totalWidth, this.contentWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class BulletPoint extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // bullet point
-            Text("-", style: textTheme.bodyText1!.copyWith(color: Colors.white)),
+            Text("-", style: textTheme.bodyLarge!.copyWith(color: Colors.white)),
             // spacing
             const SizedBox(width: 12.0),
             // text content
@@ -28,7 +28,7 @@ class BulletPoint extends StatelessWidget {
               width: contentWidth ?? size.width * 0.2,
               child: Text(
                 text,
-                style: textTheme.bodyText2!.copyWith(color: Colors.white),
+                style: textTheme.bodyMedium!.copyWith(color: Colors.white),
                 maxLines: 3,
                 overflow: TextOverflow.clip,
               ),

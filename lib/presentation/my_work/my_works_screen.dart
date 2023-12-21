@@ -6,7 +6,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class MyProjectsScreen extends StatelessWidget {
-  const MyProjectsScreen({Key? key}) : super(key: key);
+  const MyProjectsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +14,20 @@ class MyProjectsScreen extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     ProjectCardType projectCardType;
-    TextStyle screenTitleStyle = textTheme.headline3!.copyWith(color: AppTheme.ternaryColor);
+    TextStyle screenTitleStyle =
+        textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor);
 
     if (size.width > DeviceBreakpoints.desktopWidth) {
       projectCardType = ProjectCardType.desktop;
     } else if (size.width < DeviceBreakpoints.mobileWidth) {
       projectCardType = ProjectCardType.mobile;
-      screenTitleStyle = textTheme.headline5!.copyWith(
+      screenTitleStyle = textTheme.headlineSmall!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );
     } else {
       projectCardType = ProjectCardType.tablet;
-      screenTitleStyle = textTheme.headline3!.copyWith(
+      screenTitleStyle = textTheme.displaySmall!.copyWith(
         color: AppTheme.ternaryColor,
         fontWeight: FontWeight.bold,
       );
@@ -47,6 +48,7 @@ class MyProjectsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // title
+            // SectionTitle(title: '<my skills>', index: 3, style: screenTitleStyle),
             Text(
               '<my latest projects>',
               style: screenTitleStyle,
@@ -59,7 +61,9 @@ class MyProjectsScreen extends StatelessWidget {
             SizedBox(height: size.height * 0.1),
             // view all projects button
             AppButton(
-              onPressed: () => locator.get<NavigationService>().pushNamed(AppRoutes.allProjectsRoute),
+              onPressed: () => locator
+                  .get<NavigationService>()
+                  .pushNamed(AppRoutes.allProjectsRoute),
               borderColor: AppTheme.secondaryColor,
               title: 'View All Projects',
               isSmall: projectCardType != ProjectCardType.desktop,
@@ -88,15 +92,13 @@ class MyProjectsScreen extends StatelessWidget {
 
   Widget _buildProjectsList(ProjectCardType type) => Column(
         children: [
-          // Flylady Project
+          // Ubiquitous Project
           ProjectCard(
             project: projectsList[0],
             position: ProjectCardPosition.center,
             type: type,
           ),
-          // spacing
-          const SizedBox(height: 72.0),
-          // Sacred Groves Project
+          // Flylady Project
           ProjectCard(
             project: projectsList[1],
             position: ProjectCardPosition.left,
@@ -104,9 +106,17 @@ class MyProjectsScreen extends StatelessWidget {
           ),
           // spacing
           const SizedBox(height: 72.0),
-          // Procom Project
+          // Sacred Groves Project
           ProjectCard(
             project: projectsList[2],
+            position: ProjectCardPosition.center,
+            type: type,
+          ),
+          // spacing
+          const SizedBox(height: 72.0),
+          // Procom Project
+          ProjectCard(
+            project: projectsList[3],
             position: ProjectCardPosition.right,
             type: type,
           ),

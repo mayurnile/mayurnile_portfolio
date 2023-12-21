@@ -10,7 +10,7 @@ class IconAssets {
   // social media icons
   static const String github = "$socialIconsPath/github.svg";
   static const String linkedin = "$socialIconsPath/linkedin.svg";
-  static const String discord = "$socialIconsPath/discord.svg";
+  static const String instagram = "$socialIconsPath/instagram.svg";
 
   // skills icons
   static const String flutter = "$skillIconsPath/flutter.svg";
@@ -18,6 +18,7 @@ class IconAssets {
   static const String firebase = "$skillIconsPath/firebase.svg";
   static const String figma = "$skillIconsPath/figma.svg";
   static const String afterEffects = "$skillIconsPath/after_effects.svg";
+  static const String lighroom = "$skillIconsPath/lightroom.svg";
 
   // general icons
   static const String arrowBack = "$iconsBasePath/arrow_back.svg";
@@ -32,10 +33,12 @@ class ImageAssets {
   static const String myPhoto = "$imagesBasePath/my_photo.png";
 
   // Project Banners
+  static const String ubiquitousBanner = '$imagesBasePath/ubiquitous.png';
   static const String flyladyBanner = "$imagesBasePath/flylady.png";
   static const String sacredGrovesBanner = "$imagesBasePath/sacred_groves.png";
   static const String procomBanner = "$imagesBasePath/procom.png";
-  static const String smartFileManagerBanner = "$imagesBasePath/smart_file_manager.png";
+  static const String smartFileManagerBanner =
+      "$imagesBasePath/smart_file_manager.png";
   static const String myNotesBanner = "$imagesBasePath/my_notes.png";
   static const String konnectBanner = "$imagesBasePath/konnect.png";
   static const String twoStepBanner = "$imagesBasePath/two_step.png";

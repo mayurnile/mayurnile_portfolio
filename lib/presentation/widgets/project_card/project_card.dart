@@ -15,11 +15,11 @@ class ProjectCard extends StatelessWidget {
   final ProjectCardType type;
 
   const ProjectCard({
-    Key? key,
+    super.key,
     required this.project,
     required this.position,
     required this.type,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

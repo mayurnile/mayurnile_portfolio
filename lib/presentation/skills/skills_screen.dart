@@ -7,7 +7,7 @@ import './skills_desktop.dart';
 import '../../core/core.dart';
 
 class SkillsScreen extends StatelessWidget {
-  const SkillsScreen({Key? key}) : super(key: key);
+  const SkillsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

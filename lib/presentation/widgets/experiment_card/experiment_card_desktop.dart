@@ -7,9 +7,9 @@ class ExperimentCardDesktop extends StatefulWidget {
   final Project project;
 
   const ExperimentCardDesktop({
-    Key? key,
+    super.key,
     required this.project,
-  }) : super(key: key);
+  });
 
   @override
   State<ExperimentCardDesktop> createState() => _ExperimentCardDesktopState();
@@ -47,20 +47,20 @@ class _ExperimentCardDesktopState extends State<ExperimentCardDesktop> {
               // package logo
               SvgPicture.asset(IconAssets.dart),
               // package type
-              Text('Flutter Package', style: textTheme.subtitle1!.copyWith(fontFamily: 'Victor Mono')),
+              Text('Flutter Package', style: textTheme.titleMedium!.copyWith(fontFamily: 'Victor Mono')),
               // spacing
               const SizedBox(height: 12.0),
               // package title
               Text(
                 widget.project.title,
-                style: textTheme.headline4,
+                style: textTheme.headlineMedium,
               ),
               // spacing
               const SizedBox(height: 8.0),
               // package description
               Text(
                 widget.project.subtitle,
-                style: textTheme.bodyText2,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),

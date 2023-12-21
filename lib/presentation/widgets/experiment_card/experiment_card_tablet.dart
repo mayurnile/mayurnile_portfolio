@@ -7,9 +7,9 @@ class ExperimentCardTablet extends StatelessWidget {
   final Project project;
 
   const ExperimentCardTablet({
-    Key? key,
+    super.key,
     required this.project,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +34,20 @@ class ExperimentCardTablet extends StatelessWidget {
             // package logo
             SvgPicture.asset(IconAssets.dart),
             // package type
-            Text('Flutter Package', style: textTheme.subtitle1!.copyWith(fontFamily: 'Victor Mono')),
+            Text('Flutter Package', style: textTheme.titleMedium!.copyWith(fontFamily: 'Victor Mono')),
             // spacing
             const SizedBox(height: 12.0),
             // package title
             Text(
               project.title,
-              style: textTheme.headline4,
+              style: textTheme.headlineMedium,
             ),
             // spacing
             const SizedBox(height: 8.0),
             // package description
             Text(
               project.subtitle,
-              style: textTheme.bodyText2,
+              style: textTheme.bodyMedium,
             ),
           ],
         ),

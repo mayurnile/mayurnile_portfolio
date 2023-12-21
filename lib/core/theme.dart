@@ -23,56 +23,57 @@ class AppTheme {
         scaffoldBackgroundColor: backgroundColor,
         fontFamily: 'Josefin Sans',
         iconTheme: const IconThemeData(color: fontLightColor),
-        scrollbarTheme: const ScrollbarThemeData().copyWith(thumbColor: MaterialStateProperty.all(primaryColor)),
+        scrollbarTheme: const ScrollbarThemeData()
+            .copyWith(thumbColor: MaterialStateProperty.all(primaryColor)),
         textTheme: const TextTheme(
-          headline1: TextStyle(
+          displayLarge: TextStyle(
             fontSize: 48.0,
             fontWeight: FontWeight.w700,
             color: fontDarkColor,
           ),
-          headline2: TextStyle(
+          displayMedium: TextStyle(
             fontFamily: 'Victor Mono',
             fontSize: 36.0,
             fontWeight: FontWeight.w700,
             color: fontDarkColor,
           ),
-          headline3: TextStyle(
+          displaySmall: TextStyle(
             fontFamily: 'Victor Mono',
             fontSize: 24.0,
             fontWeight: FontWeight.w700,
             color: fontDarkColor,
           ),
-          headline4: TextStyle(
+          headlineMedium: TextStyle(
             fontFamily: 'Victor Mono',
             fontSize: 18.0,
             fontWeight: FontWeight.w600,
             color: fontDarkColor,
           ),
-          headline5: TextStyle(
+          headlineSmall: TextStyle(
             fontFamily: 'Victor Mono',
             fontSize: 14.0,
             fontWeight: FontWeight.w500,
             color: fontDarkColor,
           ),
-          headline6: TextStyle(
+          titleLarge: TextStyle(
             fontFamily: 'Victor Mono',
             fontSize: 12.0,
             fontWeight: FontWeight.w400,
             color: fontDarkColor,
           ),
-          bodyText1: TextStyle(
+          bodyLarge: TextStyle(
             fontFamily: 'Space Grotesk',
             fontSize: 24.0,
             fontWeight: FontWeight.w500,
             color: fontLightColor,
           ),
-          bodyText2: TextStyle(
+          bodyMedium: TextStyle(
             fontFamily: 'Space Grotesk',
             fontSize: 14.0,
             fontWeight: FontWeight.w400,
             color: fontLightColor,
           ),
-          subtitle1: TextStyle(
+          titleMedium: TextStyle(
             fontFamily: 'Space Grotesk',
             fontSize: 10.0,
             fontWeight: FontWeight.w400,
@@ -82,21 +83,24 @@ class AppTheme {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             elevation: 0.0,
-            primary: primaryColor,
-            padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 18.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+            backgroundColor: primaryColor,
+            padding:
+                const EdgeInsets.symmetric(vertical: 18.0, horizontal: 18.0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0)),
+            foregroundColor: Colors.white,
             textStyle: const TextStyle(
               fontFamily: 'Victor Mono',
               fontSize: 14.0,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
             ),
           ),
         ),
       );
 
   // Custom Themed Outlined Button Style
-  static ButtonStyle getOutlinedButtonStyle(bool isSmall, Color color) => ButtonStyle(
+  static ButtonStyle getOutlinedButtonStyle(bool isSmall, Color color) =>
+      ButtonStyle(
         elevation: MaterialStateProperty.all(0.0),
         side: MaterialStateProperty.all(BorderSide(color: color)),
         padding: MaterialStateProperty.all(
@@ -110,23 +114,30 @@ class AppTheme {
                   horizontal: 36.0,
                 ),
         ),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+        shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) return color.withOpacity(0.05);
+            if (states.contains(MaterialState.hovered)) {
+              return color.withOpacity(0.05);
+            }
             return null; // Defer to the widget's default.
           },
         ),
         overlayColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
-            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) return color.withOpacity(0.12);
+            if (states.contains(MaterialState.focused) ||
+                states.contains(MaterialState.pressed)) {
+              return color.withOpacity(0.12);
+            }
             return null; // Defer to the widget's default.
           },
         ),
       );
 
   // Custom Themed Squared Outlined Button Style
-  static ButtonStyle getSquaredOutlinedButtonStyle(bool isSmall, Color color) => ButtonStyle(
+  static ButtonStyle getSquaredOutlinedButtonStyle(bool isSmall, Color color) =>
+      ButtonStyle(
         elevation: MaterialStateProperty.all(0.0),
         side: MaterialStateProperty.all(BorderSide(color: color)),
         padding: MaterialStateProperty.all(
@@ -140,18 +151,34 @@ class AppTheme {
                   horizontal: 24.0,
                 ),
         ),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+        shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) return color.withOpacity(0.05);
+            if (states.contains(MaterialState.hovered)) {
+              return color.withOpacity(0.05);
+            }
             return null; // Defer to the widget's default.
           },
         ),
         overlayColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
-            if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) return color.withOpacity(0.12);
+            if (states.contains(MaterialState.focused) ||
+                states.contains(MaterialState.pressed)) {
+              return color.withOpacity(0.12);
+            }
             return null; // Defer to the widget's default.
           },
         ),
       );
 }
+
+// headline1 -> displayLarge
+// headline2 -> displayMedium
+// headline3 -> displaySmall
+// headline4 -> headlineMedium
+// headline5 -> headlineSmall
+// headline6 -> titleLarge
+// bodyText1 -> bodyLarge
+// bodyText2 -> bodyMedium
+// subtitle1 -> titleMedium

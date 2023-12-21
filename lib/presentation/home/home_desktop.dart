@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -6,7 +7,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class HomeDesktop extends StatelessWidget {
-  const HomeDesktop({Key? key}) : super(key: key);
+  const HomeDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +35,23 @@ class HomeDesktop extends StatelessWidget {
                 // title
                 Text(
                   '<hello there>',
-                  style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+                  style: textTheme.displaySmall!
+                      .copyWith(color: AppTheme.ternaryColor),
                 ),
                 // spacing
                 const SizedBox(height: 22.0),
                 // heading
                 Text(
                   "I'm Mayur Nile.",
-                  style: textTheme.headline1,
+                  style: textTheme.displayLarge,
                 ),
                 // spacing
                 const SizedBox(height: 18.0),
                 // sub-heading
                 Text(
                   'I build meaningful mobile apps.',
-                  style: textTheme.headline1!.copyWith(color: AppTheme.fontLightColor),
+                  style: textTheme.displayLarge!
+                      .copyWith(color: AppTheme.fontLightColor),
                 ),
                 // spacing
                 const SizedBox(height: 18.0),
@@ -61,13 +64,17 @@ class HomeDesktop extends StatelessWidget {
                           "     I'm a software engineer specializing in building (and occasionally designing) exceptional flutter applications. Currently, I'm focused on building accessible, marketing and productivity apps at ",
                       children: [
                         TextSpan(
-                          text: "Digital Trons",
-                          style: textTheme.bodyText1!.copyWith(color: AppTheme.ternaryColor),
+                          text: "Grappus",
+                          recognizer: TapGestureRecognizer()
+                            ..onTap =
+                                () => Utils.openURL(Urls.currentCompanyLink),
+                          style: textTheme.bodyLarge!
+                              .copyWith(color: AppTheme.ternaryColor),
                         ),
                         const TextSpan(text: "."),
                       ],
                     ),
-                    style: textTheme.bodyText1,
+                    style: textTheme.bodyLarge,
                   ),
                 ),
                 // spacing

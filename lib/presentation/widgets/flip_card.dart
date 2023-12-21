@@ -16,11 +16,11 @@ class FlipCard extends StatefulWidget {
   final Widget back;
 
   const FlipCard({
-    Key? key,
+    super.key,
     required this.controller,
     required this.front,
     required this.back,
-  }) : super(key: key);
+  });
 
   @override
   State<FlipCard> createState() => FlipCardState();
@@ -47,28 +47,29 @@ class FlipCardState extends State<FlipCard> with SingleTickerProviderStateMixin 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: animationController,
-        builder: (context, child) {
-          double angle = animationController.value * pi;
+      animation: animationController,
+      builder: (context, child) {
+        double angle = animationController.value * pi;
 
-          if (isFront) angle += anglePlus;
+        if (isFront) angle += anglePlus;
 
-          final transform = Matrix4.identity()
-            ..setEntry(3, 2, 0.001)
-            ..rotateY(angle);
+        final transform = Matrix4.identity()
+          ..setEntry(3, 2, 0.001)
+          ..rotateY(angle);
 
-          return Transform(
-            transform: transform,
-            alignment: Alignment.center,
-            child: isFrontWidget(angle.abs())
-                ? widget.front
-                : Transform(
-                    transform: Matrix4.identity()..rotateY(pi),
-                    alignment: Alignment.center,
-                    child: widget.back,
-                  ),
-          );
-        });
+        return Transform(
+          transform: transform,
+          alignment: Alignment.center,
+          child: isFrontWidget(angle.abs())
+              ? widget.front
+              : Transform(
+                  transform: Matrix4.identity()..rotateY(pi),
+                  alignment: Alignment.center,
+                  child: widget.back,
+                ),
+        );
+      },
+    );
   }
 
   @override

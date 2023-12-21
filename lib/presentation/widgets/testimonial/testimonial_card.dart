@@ -12,12 +12,12 @@ class TestimonialCard extends StatelessWidget {
   final double cardHeight;
 
   const TestimonialCard({
-    Key? key,
+    super.key,
     required this.testimonial,
     required this.type,
     required this.cardWidth,
     required this.cardHeight,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class TestimonialCard extends StatelessWidget {
           // testimonial given by
           Text(
             testimonial.givenBy,
-            style: isSmall ? textTheme.headline4!.copyWith(fontFamily: 'Josefin Sans') : textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
+            style: isSmall ? textTheme.headlineMedium!.copyWith(fontFamily: 'Josefin Sans') : textTheme.displaySmall!.copyWith(fontFamily: 'Josefin Sans'),
           ),
           // spacing
           const SizedBox(height: 4.0),
@@ -46,12 +46,12 @@ class TestimonialCard extends StatelessWidget {
           Text(
             testimonial.companyName,
             style: isSmall
-                ? textTheme.subtitle1!.copyWith(
+                ? textTheme.titleMedium!.copyWith(
                     color: AppTheme.secondaryColor,
                     fontFamily: 'Victor Mono',
                     fontWeight: FontWeight.bold,
                   )
-                : textTheme.bodyText2!.copyWith(
+                : textTheme.bodyMedium!.copyWith(
                     color: AppTheme.secondaryColor,
                     fontFamily: 'Victor Mono',
                     fontWeight: FontWeight.bold,
@@ -69,12 +69,12 @@ class TestimonialCard extends StatelessWidget {
                   Text(
                     "\" ",
                     style: isSmall
-                        ? textTheme.headline3!.copyWith(
+                        ? textTheme.displaySmall!.copyWith(
                             fontFamily: 'Space Grotesk',
                             color: Colors.white54,
                             height: 0.7,
                           )
-                        : textTheme.headline1!.copyWith(
+                        : textTheme.displayLarge!.copyWith(
                             fontFamily: 'Space Grotesk',
                             color: Colors.white54,
                             height: 0.7,

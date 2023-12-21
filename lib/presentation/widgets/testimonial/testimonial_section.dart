@@ -9,9 +9,9 @@ class TestimonialSection extends StatefulWidget {
   final TestimonialCardType cardType;
 
   const TestimonialSection({
-    Key? key,
+    super.key,
     required this.cardType,
-  }) : super(key: key);
+  });
 
   @override
   State<TestimonialSection> createState() => _TestimonialSectionState();

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -6,7 +7,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class HomeTablet extends StatelessWidget {
-  const HomeTablet({Key? key}) : super(key: key);
+  const HomeTablet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class HomeTablet extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     '<hello there>',
-                    style: textTheme.headline3!.copyWith(color: AppTheme.ternaryColor),
+                    style: textTheme.displaySmall!.copyWith(color: AppTheme.ternaryColor),
                   ),
                 ),
               ),
@@ -44,7 +45,7 @@ class HomeTablet extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     "I'm Mayur Nile.",
-                    style: textTheme.headline1,
+                    style: textTheme.displayLarge,
                   ),
                 ),
               ),
@@ -58,7 +59,7 @@ class HomeTablet extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     'I build meaningful mobile apps.',
-                    style: textTheme.headline1!.copyWith(color: AppTheme.fontLightColor),
+                    style: textTheme.displayLarge!.copyWith(color: AppTheme.fontLightColor),
                   ),
                 ),
               ),
@@ -73,13 +74,16 @@ class HomeTablet extends StatelessWidget {
                         "     I'm a software engineer specializing in building (and occasionally designing) exceptional flutter applications. Currently, I'm focused on building accessible, marketing and productivity apps at ",
                     children: [
                       TextSpan(
-                        text: "Digital Trons",
-                        style: textTheme.bodyText1!.copyWith(color: AppTheme.ternaryColor),
+                       text: "Grappus",
+                          recognizer: TapGestureRecognizer()
+                            ..onTap =
+                                () => Utils.openURL(Urls.currentCompanyLink),
+                        style: textTheme.bodyLarge!.copyWith(color: AppTheme.ternaryColor),
                       ),
                       const TextSpan(text: "."),
                     ],
                   ),
-                  style: textTheme.bodyText1,
+                  style: textTheme.bodyLarge,
                   maxLines: 5,
                 ),
               ),

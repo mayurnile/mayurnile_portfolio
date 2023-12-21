@@ -9,10 +9,10 @@ class ProjectCardTablet extends StatelessWidget {
   final ProjectCardPosition position;
 
   const ProjectCardTablet({
-    Key? key,
+    super.key,
     required this.project,
     required this.position,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -117,14 +117,14 @@ class ProjectCardTablet extends StatelessWidget {
             // app name
             Text(
               project.title,
-              style: textTheme.headline3!.copyWith(fontFamily: 'Josefin Sans'),
+              style: textTheme.displaySmall!.copyWith(fontFamily: 'Josefin Sans'),
             ),
             // spacing
             const SizedBox(height: 8.0),
             // description
             Text(
               project.subtitle,
-              style: textTheme.headline4!.copyWith(
+              style: textTheme.headlineMedium!.copyWith(
                 color: Colors.white,
                 fontFamily: 'Space Grotesk',
                 fontWeight: FontWeight.w300,
@@ -147,7 +147,7 @@ class ProjectCardTablet extends StatelessWidget {
                 if (project.appStoreLink != null)
                   ElevatedButton(
                     onPressed: () => Utils.openURL(project.appStoreLink!),
-                    style: ElevatedButton.styleFrom(primary: AppTheme.ternaryColor),
+                    style: ElevatedButton.styleFrom(backgroundColor: AppTheme.ternaryColor),
                     child: const Text('App Store'),
                   ),
               ],

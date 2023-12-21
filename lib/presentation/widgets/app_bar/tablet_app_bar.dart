@@ -7,9 +7,9 @@ class TabletAppBar extends StatelessWidget {
   final bool isMobile;
 
   const TabletAppBar({
-    Key? key,
+    super.key,
     required this.isMobile,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

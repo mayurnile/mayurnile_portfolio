@@ -8,7 +8,7 @@ typedef CenteredContentWidgetBuilder = Widget Function(BuildContext context, Scr
 
 class CenteredContent extends StatelessWidget {
   final CenteredContentWidgetBuilder builder;
-  const CenteredContent({Key? key, required this.builder}) : super(key: key);
+  const CenteredContent({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +60,11 @@ class CenteredContent extends StatelessWidget {
           children: [
             // social icons
             // github
-            const SocialLinkButton(icon: IconAssets.github, type: SocialLinkType.github, launchURL: Urls.githubLink),
+            const SocialLinkButton(icon: IconAssets.github, launchURL: Urls.githubLink),
             // linkedin
-            const SocialLinkButton(icon: IconAssets.linkedin, type: SocialLinkType.linkedin, launchURL: Urls.linkedinLink),
+            const SocialLinkButton(icon: IconAssets.linkedin, launchURL: Urls.linkedinLink),
             // discord
-            const SocialLinkButton(icon: IconAssets.discord, type: SocialLinkType.discord, launchURL: Urls.discordLink),
+            const SocialLinkButton(icon: IconAssets.instagram, launchURL: Urls.instagramLink),
             // accent line
             Container(
               height: size.height * 0.3,
@@ -96,7 +96,7 @@ class CenteredContent extends StatelessWidget {
 }
 
 class _AnimatedEmailLink extends StatefulWidget {
-  const _AnimatedEmailLink({Key? key}) : super(key: key);
+  const _AnimatedEmailLink();
 
   @override
   State<_AnimatedEmailLink> createState() => __AnimatedEmailLinkState();
@@ -126,7 +126,7 @@ class __AnimatedEmailLinkState extends State<_AnimatedEmailLink> {
                 child: AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
-                  style: textTheme.headline4!.copyWith(color: isHovered ? AppTheme.fontDarkColor : AppTheme.fontLightColor),
+                  style: textTheme.headlineMedium!.copyWith(color: isHovered ? AppTheme.fontDarkColor : AppTheme.fontLightColor),
                   child: const Text('mayurnile95@gmail.com'),
                 ),
               ),

@@ -7,7 +7,7 @@ import '../widgets/widgets.dart';
 import '../../core/core.dart';
 
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({Key? key}) : super(key: key);
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +18,30 @@ class LandingScreen extends StatelessWidget {
           const MyAppBar(),
           // Body
           Expanded(
-            child: LayoutBuilder(builder: (BuildContext _, BoxConstraints constraints) {
+            child: LayoutBuilder(
+                builder: (BuildContext _, BoxConstraints constraints) {
               return CenteredContent(
                 builder: (BuildContext ctx, ScrollController controller) {
-                  locator.get<NavBarController>().landingScreenScrollController = controller;
+                  locator
+                      .get<NavBarController>()
+                      .landingScreenScrollController = controller;
 
-                  if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
-                    // return _buildScreensList(context: context, controller: controller, isNeverScroll: false);
-                    return SmoothScroll(
-                      controller: controller,
-                      child: _buildScreensList(
-                        context: context,
-                        controller: controller,
-                        isNeverScroll: true,
-                      ),
-                    );
-                  } else {
-                    return _buildScreensList(
-                      context: context,
-                      controller: controller,
-                      isNeverScroll: false,
-                    );
-                  }
+                  // if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
+                  //   return SmoothScroll(
+                  //     controller: controller,
+                  //     child: _buildScreensList(
+                  //       context: context,
+                  //       controller: controller,
+                  //       isNeverScroll: true,
+                  //     ),
+                  //   );
+                  // } else {
+                  return _buildScreensList(
+                    context: context,
+                    controller: controller,
+                    isNeverScroll: false,
+                  );
+                  // }
                 },
               );
             }),

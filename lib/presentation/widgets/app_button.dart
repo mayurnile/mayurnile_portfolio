@@ -9,12 +9,12 @@ class AppButton extends StatelessWidget {
   final bool isSmall;
 
   const AppButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.onPressed,
     required this.borderColor,
     this.isSmall = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class AppButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: Theme.of(context).textTheme.headline4!.copyWith(
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
               color: borderColor,
               fontSize: isSmall ? 14.0 : 18.0,
             ),
