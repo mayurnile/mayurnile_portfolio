@@ -4,23 +4,14 @@ import 'package:flutter/gestures.dart';
 
 import '../../core/core.dart';
 
-const int defaultNormalScrollAnimationLengthMS = 500;
-const double defaultScrollSpeed = 1.2;
+const int defaultNormalScrollAnimationLengthMS = 1500;
+const double defaultScrollSpeed = 2.5;
 
 class SmoothScroll extends StatefulWidget {
-  ///Same ScrollController as the child widget's.
   final ScrollController controller;
-
-  ///Child scrollable widget.
   final Widget child;
-
-  ///Scroll speed px/scroll.
   final double scrollSpeed;
-
-  ///Scroll animation length in milliseconds.
   final int scrollAnimationLength;
-
-  ///Curve of the animation.
   final Curve curve;
 
   const SmoothScroll({
@@ -37,23 +28,65 @@ class SmoothScroll extends StatefulWidget {
 }
 
 class _SmoothScrollState extends State<SmoothScroll> {
-  // data variables
   double _scroll = 0;
+  bool _isAnimating = false;
+  double _targetScroll = 0;
+  DateTime _lastScrollTime = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-
     widget.controller.addListener(scrollListener);
+    _targetScroll = widget.controller.initialScrollOffset;
   }
 
   @override
   void didUpdateWidget(covariant SmoothScroll oldWidget) {
-    // ignore: invalid_use_of_protected_member
-    if (widget.controller.hasListeners == false) {
+    if (!widget.controller.hasClients) {
       widget.controller.addListener(scrollListener);
     }
     super.didUpdateWidget(oldWidget);
+  }
+
+  void _smoothScrollTo(double delta) {
+    final now = DateTime.now();
+    final timeDiff = now.difference(_lastScrollTime).inMilliseconds;
+    _lastScrollTime = now;
+
+    // Update target scroll position
+    _targetScroll += (delta * widget.scrollSpeed);
+
+    // Bound the scroll value
+    if (_targetScroll > widget.controller.position.maxScrollExtent) {
+      _targetScroll = widget.controller.position.maxScrollExtent;
+    }
+    if (_targetScroll < 0) {
+      _targetScroll = 0;
+    }
+
+    // Calculate animation duration based on time between scrolls
+    int animationDuration = timeDiff < 50
+        ? widget.scrollAnimationLength ~/ 4 // Faster for rapid scrolling
+        : widget.scrollAnimationLength;
+
+    // If at bounds, use shorter animation
+    if (_targetScroll == widget.controller.position.maxScrollExtent ||
+        _targetScroll == 0) {
+      animationDuration = widget.scrollAnimationLength ~/ 4;
+    }
+
+    // Always start a new animation to the target
+    widget.controller
+        .animateTo(
+      _targetScroll,
+      duration: Duration(milliseconds: animationDuration),
+      curve: widget.curve,
+    )
+        .then((_) {
+      setState(() => _isAnimating = false);
+    });
+
+    setState(() => _isAnimating = true);
   }
 
   @override
@@ -61,28 +94,8 @@ class _SmoothScrollState extends State<SmoothScroll> {
     return GetBuilder<NavBarController>(builder: (navBarController) {
       return Listener(
         onPointerSignal: (pointerSignal) {
-          int millis = widget.scrollAnimationLength;
           if (pointerSignal is PointerScrollEvent) {
-            if (pointerSignal.scrollDelta.dy > 0) {
-              _scroll += (pointerSignal.scrollDelta.dy * widget.scrollSpeed);
-            } else {
-              _scroll += (pointerSignal.scrollDelta.dy * widget.scrollSpeed);
-            }
-
-            if (_scroll > widget.controller.position.maxScrollExtent) {
-              _scroll = widget.controller.position.maxScrollExtent;
-              millis = widget.scrollAnimationLength ~/ 4;
-            }
-            if (_scroll < 0) {
-              _scroll = 0;
-              millis = widget.scrollAnimationLength ~/ 4;
-            }
-
-            widget.controller.animateTo(
-              _scroll,
-              duration: Duration(milliseconds: millis),
-              curve: widget.curve,
-            );
+            _smoothScrollTo(pointerSignal.scrollDelta.dy);
           }
         },
         child: widget.child,
@@ -90,8 +103,17 @@ class _SmoothScrollState extends State<SmoothScroll> {
     });
   }
 
-  /// Member Functions
-  ///
-  ///
-  void scrollListener() => _scroll = widget.controller.offset;
+  void scrollListener() {
+    _scroll = widget.controller.offset;
+    // Update target scroll when user manually scrolls
+    if (!_isAnimating) {
+      _targetScroll = _scroll;
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(scrollListener);
+    super.dispose();
+  }
 }

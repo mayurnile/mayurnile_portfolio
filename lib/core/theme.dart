@@ -24,7 +24,7 @@ class AppTheme {
         fontFamily: 'Josefin Sans',
         iconTheme: const IconThemeData(color: fontLightColor),
         scrollbarTheme: const ScrollbarThemeData()
-            .copyWith(thumbColor: MaterialStateProperty.all(primaryColor)),
+            .copyWith(thumbColor: WidgetStateProperty.all(primaryColor)),
         textTheme: const TextTheme(
           displayLarge: TextStyle(
             fontSize: 48.0,
@@ -101,9 +101,9 @@ class AppTheme {
   // Custom Themed Outlined Button Style
   static ButtonStyle getOutlinedButtonStyle(bool isSmall, Color color) =>
       ButtonStyle(
-        elevation: MaterialStateProperty.all(0.0),
-        side: MaterialStateProperty.all(BorderSide(color: color)),
-        padding: MaterialStateProperty.all(
+        elevation: WidgetStateProperty.all(0.0),
+        side: WidgetStateProperty.all(BorderSide(color: color)),
+        padding: WidgetStateProperty.all(
           isSmall
               ? const EdgeInsets.symmetric(
                   vertical: 18.0,
@@ -114,20 +114,20 @@ class AppTheme {
                   horizontal: 36.0,
                 ),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
-        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) {
+        backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.hovered)) {
               return color.withOpacity(0.05);
             }
             return null; // Defer to the widget's default.
           },
         ),
-        overlayColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.focused) ||
-                states.contains(MaterialState.pressed)) {
+        overlayColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.focused) ||
+                states.contains(WidgetState.pressed)) {
               return color.withOpacity(0.12);
             }
             return null; // Defer to the widget's default.
@@ -138,9 +138,9 @@ class AppTheme {
   // Custom Themed Squared Outlined Button Style
   static ButtonStyle getSquaredOutlinedButtonStyle(bool isSmall, Color color) =>
       ButtonStyle(
-        elevation: MaterialStateProperty.all(0.0),
-        side: MaterialStateProperty.all(BorderSide(color: color)),
-        padding: MaterialStateProperty.all(
+        elevation: WidgetStateProperty.all(0.0),
+        side: WidgetStateProperty.all(BorderSide(color: color)),
+        padding: WidgetStateProperty.all(
           isSmall
               ? const EdgeInsets.symmetric(
                   vertical: 18.0,
@@ -151,20 +151,20 @@ class AppTheme {
                   horizontal: 24.0,
                 ),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
-        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) {
+        backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.hovered)) {
               return color.withOpacity(0.05);
             }
             return null; // Defer to the widget's default.
           },
         ),
-        overlayColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.focused) ||
-                states.contains(MaterialState.pressed)) {
+        overlayColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.focused) ||
+                states.contains(WidgetState.pressed)) {
               return color.withOpacity(0.12);
             }
             return null; // Defer to the widget's default.

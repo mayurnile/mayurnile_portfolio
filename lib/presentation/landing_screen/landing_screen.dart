@@ -26,22 +26,22 @@ class LandingScreen extends StatelessWidget {
                       .get<NavBarController>()
                       .landingScreenScrollController = controller;
 
-                  // if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
-                  //   return SmoothScroll(
-                  //     controller: controller,
-                  //     child: _buildScreensList(
-                  //       context: context,
-                  //       controller: controller,
-                  //       isNeverScroll: true,
-                  //     ),
-                  //   );
-                  // } else {
-                  return _buildScreensList(
-                    context: context,
-                    controller: controller,
-                    isNeverScroll: false,
-                  );
-                  // }
+                  if (constraints.maxWidth > DeviceBreakpoints.desktopWidth) {
+                    return SmoothScroll(
+                      controller: controller,
+                      child: _buildScreensList(
+                        context: context,
+                        controller: controller,
+                        isNeverScroll: true,
+                      ),
+                    );
+                  } else {
+                    return _buildScreensList(
+                      context: context,
+                      controller: controller,
+                      isNeverScroll: false,
+                    );
+                  }
                 },
               );
             }),
